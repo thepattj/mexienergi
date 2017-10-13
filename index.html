@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/estilo.css">
+        <script src="js/funciones.js" ></script>
+        <meta http-equiv="Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src data:; font-src 'self';">
+    </head>
+    <body>
+      <div id="bg-negro" onclick="cerrar()"></div>
+        <div id="modal"></div>
+        <div class="pantalla-inicio">
+            <div class="bg-logo">
+                <div class="img-logo">
+                    <img src="img/logo.png" id="ilogo">
+                </div>
+            </div>
+             <div class="bg-formu">
+               <form onsubmit="return false" class="riz" id="formulario">
+                   <div class="div1"></div>
+                   <div class="div1" style="color: white">Correo</div>
+                   <div class="div1"><input type="text" name="" placeholder="ejemplo@mail.com" id="correo"></div>
+                   <div class="div1"></div>
+
+                   <div class="div1" style="color: white;">Contraseña</div>
+                   <div class="div1"><input type="password" name="" placeholder="******" id="contra"></div>
+                   <div class="div1"></div>
+                   <div class="div1"><button onclick="entrar(this.form)" style="color: white;">Ingresar</button></div>
+                   <div class="div1"><button onclick="registrar()" style="color: white;">Registrar</button></div>
+               </form>
+
+               <form onsubmit="return false" class="rde" id="formreg">
+                   <div class="div1"></div>
+                   <div class="div1">Solicita tu contraseña,<br>ingresando tu correo</div>
+                   <div class="div1">Correo</div>
+                   <div class="div1"><input type="text" name="" placeholder="ejemplo@mail.com" id="correo"></div>
+                   <div class="div1"></div>
+                   <div class="div1"><button onclick="conseguir(this.form)">Mandar</button></div>
+               </form>
+            </div>
+            <div class="bg-dere">
+               <div class="div1" style="float: left; align-content: center; text-align: center; font-size: .7em; margin-top: 7%;">Todos los derechos reservados.  <a href="http://www.mi-gas-web.com/index.php" target="_blank" style='text-decoration:none;color:green;'>  MI GAS</a></div>
+              <!-- <div class="div1" style="float: left; align-content: center; text-align: center; font-size: .8em;"></div>-->
+            </div>             
+        </div>
+    </body>
+</html>
