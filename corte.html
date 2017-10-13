@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src data:; font-src 'self';">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <script src="js/funciones.js"></script>
+</head>
+
+<body onload="mostrarcorte()">
+    <!-- <div class="alerta"><h1 id="alertaContenido"> </h1> </div> -->
+    <div id="bg-negro" onclick="cerrarm()"></div>
+    <div id="menu"></div>
+    <div id="modal"></div>
+    <div class="pantalla-bg">
+        <div class="header">
+            <div class="div6"></div>
+            <div class="div60">
+                <img src="img/logo.png" id="logo">
+            </div>
+            <div class="div6">
+                <button onclick="salir()" id="csesion"><img src="img/icon/exit.png" id="sesion"></button>
+            </div>
+        </div>
+        <div class="header user" style="display: none;">
+            <div class="div6">
+                <button onclick="pagina('inicio.html')" id="atras"><img src="img/icon/atras.png" id="back"></button>
+            </div>
+            <div class="div60">
+                <img src="img/logo.png" id="logo">
+            </div>
+            <div class="div6">
+               <button onclick="salir()" id="csesion"><img src="img/icon/exit.png" id="sesion"></button>
+            </div>
+        </div>
+        <div class="liston">
+            <div class="div1" id="masgrande" onclick="mostrarcorte()"><p>Estaciones</p></div>
+        </div>
+        <div class="menu-bg" id="menusta">
+            <!-- <div class="divestacion">
+                <div class="div1"><div class="div20">Imagen</div><div class="div80">Estación</div></div>
+            </div> -->
+        </div>
+        <div class="menu-bg" id="proxsta" style="display: none;">
+            <!-- <div class="divestacion">
+                <div class="div1"><div class="div20">Imagen</div><div class="div80">Estación</div></div>
+            </div> -->
+        </div>
+        <!--<div class="footeru">
+            <img src="img/pie_movil.png" class="foot">
+        </div>-->
+    </div>
+</body>
+
+</html>

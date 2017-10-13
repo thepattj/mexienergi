@@ -1,23 +1,24 @@
 /*
     Colores
-    Base        #049444 / 4,148,68
-    Blancos     #52b281 / 103,188,140
-    Negros      #000000 - #094725 / 9,71,37 
-    azules      #1E729A / 30,114,154
-    rojos       #DC2C33 / 220,44,51 - #D03006 / 208,48,6
-    amarillos   #F49426 / 244,148,38
+    Base        #0D632D #FC3C04 / 4,148,68
+    Blancos     #FBFBFB #97AFB4/ 103,188,140
+    Negros      #000000 / 9,71,37 
+    azules      #2E7BA5 #6BC9C3 / 30,114,154
+    rojos       #AF0800 / 220,44,51 - #FFA63C / 208,48,6
+    amarillos   #FE8709 / 244,148,38
+    verdes      #237D45 /
     
 */
 
 @font-face {
-    font-family: Baloo;
-    src: url(../fuente/Baloo-Regular.ttf)
+    font-family: Aller;
+    src: url(../fuente/aller.regular.ttf)
 }
 
 * {
     margin: 0px;
     padding: 0px;
-    font-family: Baloo, cursive;
+    font-family: Aller, cursive;
     color: black;
 }
 
@@ -204,12 +205,12 @@ h4 {
 button {
     height: 40px;
     width: 60%;
-    border: 2px solid rgba(48,146,139,.8);
+    border: 2px solid rgba(35,125,69,.8);
     border-radius: 15px;
     font-size: 1em;
     color: white;
     outline: none;
-    background-color: rgba(48,146,139,.8);
+    background-color: rgba(35,125,69,.8);
 }
 
 
@@ -364,7 +365,7 @@ option {
 
 .headeresta {
     width: 99.9%;
-    height: 10%;
+    height: 12%;
     position: fixed;
     float: left;
     background: transparent;
@@ -372,16 +373,16 @@ option {
 
 .header {
     width: 99.9%;
-    height: 10%;
+    height: 12%;
     position: absolute;
     float: left;
     border-bottom: 2px solid #ccc;
-    background: #009046;
+    background: #237D45;
 }
 
 #logo {
-    width: 45%;
-    height: 65%;
+    width: 40%;
+    height: 75%;
     position: relative;
     margin-top: 4%;
     margin-left: 10%;
@@ -575,11 +576,13 @@ option {
 /* ===========index.php=========*/
 
 .pantalla-inicio {
-    background-image: url('../img/fondo.jpg');
     /* background-image: url('http//:direccion'); */
+
+    background-image: url('../img/fondo1.jpg');    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    /* background: black; */
     width: 100%;
     height: 100%;
     /*Le damos un position relative para que el contenido no se 
@@ -591,7 +594,7 @@ option {
 
 .bg-logo {
     width: 100%;
-    height: 35%;
+    height: 40%;
     position: absolute;
     float: left;
 }
@@ -602,7 +605,7 @@ option {
     height: 55%;
     max-height: 41%;
     position: relative;
-    top: 30%;
+    top: 25%;
     left: 13%;
 }
 
@@ -656,7 +659,7 @@ option {
     position: absolute;
     /* top: .5%; */
     float: left;
-    top: 10%;
+    top: 12%;
 }
 
 .img-ban {
@@ -673,22 +676,22 @@ option {
 .estado {    
     width: 100%;
     height: 25%;
-    top: 40%;
+    top: 42%;
     position: absolute;
     float: left;    
 }
 
 .estado1{
-    background-color: #009046;
+    background-color: rgba(35,125,69,.8);
     width: 100%;
-    height: 50%;
+    height: 55%;
     position: relative;
     float: left;
     border-bottom: 1px solid rgba(0, 144, 70, .6);
 }
 .estado2{
     width: 100%;
-    height: 50%;
+    height: 45%;
     position: relative;
     float: left;
 }
@@ -705,8 +708,8 @@ option {
 .boton-bg {
     /* background-color: yellow; */
     width: 100%;
-    height: 30%;
-    top: 70%;
+    height: 28%;
+    top: 72%;
     position: absolute;
     float: left;
 }
@@ -732,19 +735,19 @@ option {
 /*============corte.html=============*/
 
 .liston {
-    background: #009046;
+    background:rgba(151,175,180,.6);
     width: 100%;
     height: 7%;
     position: absolute;
-    top: 10%;
+    top: 12%;
 }
 
 .menu-bg {
     /*background: red;*/
     width: 100%;
-    height: 70%;
+    height: 68%;
     position: absolute;
-    top: 17%;
+    top: 19%;
 }
 
 .divestacion {
@@ -754,7 +757,7 @@ option {
     margin-top: 2%;
     position: relative;
     float: left;
-    border-bottom: 4px solid rgba(0,144,70,.6);
+    border-bottom: 4px solid rgba(0,0,0,.6);
 }
 
 #proxsta{
@@ -862,7 +865,7 @@ option {
     width: 100%;
     height: 70%;
     position: absolute;
-    top: 10%;
+    top: 12%;
 }
 
 .divseccion {
@@ -872,7 +875,7 @@ option {
     margin-top: 2%;
     position: relative;
     float: left;
-    border-bottom: 4px solid rgba(0,144,70,.6);
+    border-bottom: 4px solid rgba(0,0,0,.6);
 }
 
 #iconsecc{
