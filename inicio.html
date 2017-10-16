@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/estilo.css">
     <script src="js/funciones.js"></script>
+    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSMBr3VrhTjzUOGe0kKcOyj7u-h5--fok&callback=initMap"
+      type="text/javascript"></script> -->
 </head>
 
 <body onload="vald()">
-    <!-- <div class="alerta"><h1 id="alertaContenido"> </h1> </div> -->
-<!--    <div id="bg-negro" onclick="cerrarm()"></div>
-    <div id="menu"></div>-->
+    <div id="bg-negro" onclick="cerrar()"></div>
+    <div id="modal"></div>
     <div class="pantalla-bg">
         <div class="header">
             <div class="div6">
@@ -24,45 +25,64 @@
             </div>
         </div>
         <div class="seccion-bg no" id="sem">
-            <div class="divseccion" onclick="pagina('semaforo.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/semaforo1.png"></div><div class="div80"><p style="font-weight: bold;">SEMÁFORO</p></div></div>
+            <div class="divseccion" onclick="pagina('semaforo.html')" style="background-image: url(img/sem1.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">SEMÁFORO</p></div>
             </div>
-            <div class="divseccion" onclick="pagina('mapa.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/map.png"></div><div class="div80"><p style="font-weight: bold;">MAPA</p></div></div>
+            <div class="divseccion" onclick="progres()" style="background-image: url(img/map.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">MAPA</p></div>
             </div>
-            <div class="divseccion">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/web.png"></div><div class="div80"><p style="font-weight: bold;">PÁGINA WEB</p></div></div>
-            </div>
+            <a href="http://www.mi-gas-web.com" target="_blank"> <div class="divseccion" style="background-image: url(img/web1.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">PÁGINA</p></div>
+            </div></a>
         </div>
         <div class="seccion-bg no" id="est">
-            <div class="divseccion" onclick="pagina('corte.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/estaciones.png"></div><div class="div80"><p style="font-weight: bold;">CORTES</p></div></div>
+           <div class="divseccion" onclick="pagina('corte.html')" style="background-image: url(img/fin.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">CORTES</p></div>
             </div>
-            <div class="divseccion" onclick="pagina('mapa.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/map.png"></div><div class="div80"><p style="font-weight: bold;">MAPA</p></div></div>
+            <div class="divseccion" onclick="progres()" style="background-image: url(img/map.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">MAPA</p></div>
             </div>
-            <div class="divseccion">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/web.png"></div><div class="div80"><p style="font-weight: bold;">PÁGINA WEB</p></div></div>
-            </div>
+            <a href="http://www.mi-gas-web.com" target="_blank"> <div class="divseccion" style="background-image: url(img/web1.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">PÁGINA</p></div>
+            </div></a>
         </div>
         <div class="seccion-bg no" id="su">
-            <div class="divseccion" onclick="pagina('semaforo.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/semaforo1.png"></div><div class="div80"><p style="font-weight: bold;">SEMÁFORO</p></div></div>
+            <div class="divseccion" onclick="pagina('semaforo.html')" style="background-image: url(img/sem1.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">SEMÁFORO</p></div>
             </div>
-            <div class="divseccion" onclick="pagina('corte.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/estaciones.png"></div><div class="div80"><p style="font-weight: bold;">CORTES</p></div></div>
+            <div class="divseccion" onclick="pagina('corte.html')" style="background-image: url(img/fin.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">CORTES</p></div>
             </div>
-            <div class="divseccion" onclick="pagina('mapa.html')">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/map.png"></div><div class="div80"><p style="font-weight: bold;">MAPA</p></div></div>
+            <div class="divseccion" onclick="progres()" style="background-image: url(img/map.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">MAPA</p></div>
             </div>
-            <div class="divseccion">
-                <div class="div1"><div class="div20"><img id="iconsecc" src="img/icon/web.png"></div><div class="div80"><p style="font-weight: bold;">PÁGINA WEB</p></div></div>
-            </div>
+            <a href="http://www.mi-gas-web.com" target="_blank"> <div class="divseccion" style="background-image: url(img/web1.jpg); background-size: 100% 100%; background-repeat: no-repeat; background-position: center center">
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 24%;"><p style="font-weight: bold; text-align: right;"></p></div>
+                <div class="div3" style="margin-top: 23%;"><p style="font-weight: bold;">PÁGINA</p></div>
+            </div></a>
         </div>
         <!--<div class="footeru">
             <img src="img/pie_movil.png" class="foot">
         </div>-->
     </div>
 </body>
-
 </html>

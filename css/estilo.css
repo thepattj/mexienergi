@@ -829,14 +829,14 @@ option {
 }
 
 .imgm{
-    width: 30%;
-    height: 100%;
+    width: 35%;
+    height: 90%;
     position: relative;
     margin-top: 2%;
 }
 .imgms{
-    width: 30%;
-    height: 90%;
+    width: 35%;
+    height: 80%;
     position: relative;
     margin-top: 7%;
 }
@@ -892,4 +892,40 @@ option {
     height: 80%;
     position: relative;
     margin-top: 4%
+}
+
+
+/*======================mapa.html=========================*/
+.mapa{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    float: left;
+    /*background: red;*/
+}
+.buscador{
+    position: absolute;
+    top: 45px;
+    z-index: 99;
+    width:74.25%;
+    background-color: transparent;
+}
+
+.botonbuscador{
+    position: absolute;
+    top: 45px;
+    z-index: 99;
+    width: 85px;
+    /*background-color: red !important;*/
+    left: 74.25%;
+}
+
+.buscador input{
+    width: 100%;
+}
+
+.botonbuscador img{
+    height: 30px;
+    width: 30px;
+    margin-left: 28px;
 }

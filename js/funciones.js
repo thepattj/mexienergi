@@ -185,6 +185,10 @@ function vald(){
     }
 }
 
+function progres(){
+    verModal('grande', '', 'Ok', "En construcción...");
+}
+
 /*PARA semaforo.html*/
 function llenado() { // llena el select de los servidores
     estaci = sessionStorage.getItem("ess");
@@ -224,17 +228,17 @@ function llenado() { // llena el select de los servidores
             for (index = 0; index < num; index++) {
                 select.options[select.options.length] = new Option(esta[index], dir[index]);
                 if(esta[0] == "AEROPUERTO"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[0]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[0]+"'>"
                 }if(esta[0] == "MACIAS"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[4]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[4]+"'>"
                 }if(esta[0] == "TLACOTE"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[5]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[5]+"'>"
                 }if(esta[0] == "ARCANGEL"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[1]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[1]+"'>"
                 }if(esta[0] == "EPIGMENIO"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[2]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[2]+"'>"
                 }if(esta[0] == "NORTHM"){
-                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' src='"+dirimg[3]+"'>"
+                    document.getElementById("imagenb").innerHTML = "<img style='width:99%; height:99%; margin-left:.5%;' id='imgsem' src='"+dirimg[3]+"'>"
                 }
                 /*=========================== VA A CAMBIAR ES DECIR HAY QUE AGREGAR TODOS LOS CASOS QUE SEAN LA PRIMERA Y UNICA ESTACION======================*/
             }
@@ -243,6 +247,29 @@ function llenado() { // llena el select de los servidores
 }
 
 function reinicio() { // Cuando hace el cambio de estaciones en el semaforo regresa los botones a su default
+    p = document.getElementById("selec");
+    selecsta = p.options[p.selectedIndex].text;
+
+    if(selecsta == "AEROPUERTO"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[0];
+    }if(selecsta == "TLACOTE"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[5];
+    }if(selecsta == "MACIAS"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[4];
+    }if(selecsta == "ARCANGEL"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[1];
+    }if(selecsta == "EPIGMENIO"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[2];
+    }if(selecsta == "NORTHM"){
+        image = document.getElementById("imgsem");
+        image.src = dirimg[3];
+    }
+
     image = document.getElementById("botono");
     image.src = "img/lightn.png";
     document.getElementById("estado").style.backgroundColor = "rgba(48,146,139,.8)";
@@ -681,44 +708,105 @@ function tipoCorte(cambio) {
     if (opcion == "corte") {
         diac.classList.add("ver");
         diac.classList.remove("nv");
+        document.getElementById("cortet").style.borderBottom = "2px solid #f60908";
+        image = document.getElementById("cortei");
+        image.src = "img/icon/corteselec.png";
+        
+
         porm.classList.add("nv");
         porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+        image = document.getElementById("mesi");
+        image.src = "img/icon/mes.png";
+
         prom.classList.add("nv");
         prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+        image = document.getElementById("promedi");
+        image.src = "img/icon/promedio.png";
+
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
+        image = document.getElementById("rangoi");
+        image.src = "img/icon/rango.png";
     }
     if (opcion == "pmes") {
         porm.classList.add("ver");
         porm.classList.remove("nv");
+        document.getElementById("pmest").style.borderBottom = "2px solid #f60908";
+        image = document.getElementById("mesi");
+        image.src = "img/icon/meselect.png";
+
         diac.classList.add("nv");
         diac.classList.remove("ver");
+        document.getElementById("cortet").style.borderBottom = "none";
+        image = document.getElementById("cortei");
+        image.src = "img/icon/corte.png";
+
         prom.classList.add("nv");
         prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+        image = document.getElementById("promedi");
+        image.src = "img/icon/promedio.png";
+
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
+        image = document.getElementById("rangoi");
+        image.src = "img/icon/rango.png";
         pormes();
     }
     if (opcion == "promedio") {
         prom.classList.add("ver");
         prom.classList.remove("nv");
+        document.getElementById("promediot").style.borderBottom = "2px solid #f60908";
+        image = document.getElementById("promedi");
+        image.src = "img/icon/promedioselect.png";
+
         diac.classList.add("nv");
         diac.classList.remove("ver");
+        document.getElementById("cortet").style.borderBottom = "none";
+        image = document.getElementById("cortei");
+        image.src = "img/icon/corte.png";
+
         porm.classList.add("nv");
         porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+        image = document.getElementById("mesi");
+        image.src = "img/icon/mes.png"
+
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
+        image = document.getElementById("rangoi");
+        image.src = "img/icon/rango.png";
         promdmes();
     }
     if (opcion == "rfecha") {
         ranf.classList.add("ver");
         ranf.classList.remove("nv");
+        document.getElementById("rfechat").style.borderBottom = "2px solid #f60908";
+        image = document.getElementById("rangoi");
+        image.src = "img/icon/rangoselect.png";
+
         diac.classList.add("nv");
         diac.classList.remove("ver");
+        document.getElementById("cortet").style.borderBottom = "none";
+        image = document.getElementById("cortei");
+        image.src = "img/icon/corte.png";
+
         porm.classList.add("nv");
         porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+        image = document.getElementById("mesi");
+        image.src = "img/icon/mes.png"
+
         prom.classList.add("nv");
         prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+        image = document.getElementById("promedi");
+        image.src = "img/icon/promedio.png";
         porfecha()
     }
 }
