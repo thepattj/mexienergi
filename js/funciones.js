@@ -272,8 +272,8 @@ function reinicio() { // Cuando hace el cambio de estaciones en el semaforo regr
 
     image = document.getElementById("botono");
     image.src = "img/lightn.png";
-    document.getElementById("estado").style.backgroundColor = "rgba(48,146,139,.8)";
-    document.getElementById("estado").style.border = "rgba(48,146,139,.8)";
+    document.getElementById("estado").style.backgroundColor = "rgba(35,125,69,.8)";
+    document.getElementById("estado").style.border = "rgba(35,125,69,.8)";
     document.getElementById("estado").disabled = false;
 
     document.getElementById("dstado").innerHTML = "Status";
@@ -286,14 +286,16 @@ function reinicio() { // Cuando hace el cambio de estaciones en el semaforo regr
 function enviarS(form) { //pregunta el status de el servidor
     pedir = "Status"
     dire = form.selec.value;
+    division = dire.split(":");
+    puerto = division[2].split("/");
+    /*alert(puerto[0]);*/
 
     if (dire != 0) {
-        /*alert(dire);*/
         enviar = new XMLHttpRequest;
-        /*enviar.open('POST', 'datosws.php');*/
+        /*enviar.open('POST', '../../datosgas/datosws.php');*/
         enviar.open('POST', 'http://200.95.237.38/gas/datosws.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        enviar.send('estado=' + pedir + '&direcion=' + dire);
+        enviar.send('estado=' + pedir + '&direcion=' + dire +'&p='+puerto[0]);
         verAlerta('Chico', 'Procesando...',''); //COMO HACER QUE SE ESCRIBA UNA UNICA VEZ
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
@@ -325,8 +327,8 @@ function enviarS(form) { //pregunta el status de el servidor
 
 
 
-                        document.getElementById("cambio").style.backgroundColor = "#30928B";
-                        document.getElementById("cambio").border = "#30928B";
+                        document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
+                        document.getElementById("cambio").border = "rgba(35,125,69,.8)";
                         document.getElementById("cambio").disabled = false;
                     }
                     if (estado == "Apagado") {
@@ -338,15 +340,15 @@ function enviarS(form) { //pregunta el status de el servidor
 
 
 
-                        document.getElementById("cambio").style.backgroundColor = "#30928B";
-                        document.getElementById("cambio").border = "#30928B";
+                        document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
+                        document.getElementById("cambio").border = "rgba(35,125,69,.8)";
                         document.getElementById("cambio").disabled = false;
                     }
 
                 } else {
                     verModal('grande', '', 'Ok', "Hay un error en el servidor, favor de reportar");
-                    document.getElementById("estado").style.backgroundColor = "#30928B";
-                    document.getElementById("estado").style.border = "#30928B";
+                    document.getElementById("estado").style.backgroundColor = "rgba(35,125,69,.8)";
+                    document.getElementById("estado").style.border = "rgba(35,125,69,.8)";
                     document.getElementById("estado").disabled = false;
 
                     document.getElementById("dstado").innerHTML = "Status";
@@ -366,6 +368,8 @@ function enviarS(form) { //pregunta el status de el servidor
 function cambiarS(form) { //genera una peticion para el cambio de status
     res = sessionStorage.getItem("state");
     dire = form.selec.value;
+    division = dire.split(":");
+    puerto = division[2].split("/");
     /*alert(res);*/
     if (res == "Prendido") {
         /*alert(dire);*/
@@ -376,7 +380,8 @@ function cambiarS(form) { //genera una peticion para el cambio de status
         /*enviar.open('POST', 'datows.php');*/
         enviar.open('POST', 'http://200.95.237.38/gas/datows.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        enviar.send('cambiar=' + res + '&direcion=' + dire);
+        enviar.send('cambiar=' + res + '&direcion=' + dire +'&p='+puerto[0]);
+        
         verAlerta('Chico', 'Procesando...','');
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
@@ -398,8 +403,8 @@ function cambiarS(form) { //genera una peticion para el cambio de status
                     document.getElementById("estado").style.border = "grey";
                     document.getElementById("estado").disabled = true;
 
-                    document.getElementById("cambio").style.backgroundColor = "rgba(48,146,139,.8)";
-                    document.getElementById("cambio").border = "rgba(48,146,139,.8)";
+                    document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
+                    document.getElementById("cambio").border = "rgba(35,125,69,.8)";
                     document.getElementById("cambio").disabled = false;
                 }
 
@@ -415,7 +420,7 @@ function cambiarS(form) { //genera una peticion para el cambio de status
         /*enviar.open('POST', 'datows.php');*/
         enviar.open('POST', 'http://200.95.237.38/gas/datows.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        enviar.send('cambiar=' + res + '&direcion=' + dire);
+        enviar.send('cambiar=' + res + '&direcion=' + dire +'&p='+puerto[0]);
        verAlerta('Chico', 'Procesando...','');
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
@@ -437,8 +442,8 @@ function cambiarS(form) { //genera una peticion para el cambio de status
                     document.getElementById("estado").style.border = "grey";
                     document.getElementById("estado").disabled = true;
 
-                    document.getElementById("cambio").style.backgroundColor = "rgba(48,146,139,.8)";
-                    document.getElementById("cambio").border = "rgba(48,146,139,.8)";
+                    document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
+                    document.getElementById("cambio").border = "rgba(35,125,69,.8)";
                     document.getElementById("cambio").disabled = false;
                 }
             }

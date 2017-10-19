@@ -452,6 +452,7 @@ option {
     position: relative;
     /*Permitimos el scroll vertical para cuando salga el teclado.*/
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 

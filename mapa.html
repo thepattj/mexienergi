@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <script src="js/funciones.js"></script>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASQKvbTGUZ1Ds6TTJJXJAuicT0ejXwNpw">
+    </script>
+</head>
+<body>
+  <div class="div1">
+     <div class="buscador">
+        <input type="text" placeholder="calle, numero, estado" id="dirr">
+    </div>    
+  </div>
+    
+  <div id="map" class="mapa"></div> 
+</body>
+
+</html>
+
+
+<script>
+  window.onload = geoloca; // cargar esta funcion enseguida del dom
+  /*window.onload = obtenerdireccion;*/
+    
+  var map = null;
+  var marker = null;
+  var geocoder = new google.maps.Geocoder();
+  
+  function geoloca(){ //FUNCION DE LA GEOLOCALIZACION QUE DARA LA VARIABLE myLatlng
+    navigator.geolocation.getCurrentPosition(initMap);
+  }
+
+  function initMap() { //FUNCION QUE CARGA EL MAPA CON LA GEOLOCALIZACION ACTUAL
+    var myLatlng = new google.maps.LatLng(20.5879036,-100.3879142);
+    var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: myLatlng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatlng,
+          draggable: true,
+          animation: google.maps.Animation.DROP,
+          map: map
+        });
+       marker.addListener('click', toggleBounce);
+      
+    geocoder.geocode({'latLng': myLatlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[0]) {
+          /*console.log(results[0].formatted_address);*/
+          var direccioNueva = results[0].formatted_address;
+          document.getElementById("dirr").value = direccioNueva;
+        }
+      }
+    });
+  }
+    
+    function toggleBounce() {
+      if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+      } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+      }
+    }
+
+ /* function buscarDireccion(){ //FUNCION QUE TOMA LA DIRECCION ESCRITA EN EL INPUT Y BUSCA POR GEOCODER
+    var direccion = document.getElementById("dirr").value;
+    geocoder.geocode({'address': direccion}, geocodeResultDO);
+  }
+
+  function geocodeResultDO(results, status){ //FUNCION QUE REGRESA EL JSON Y DEVUELVE LOS DATOS DE DIRECCION CON EL MARCADOR
+    if(status == 'OK'){
+      var mapOptions = {
+        center: results[0].geometry.location,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+      map = new google.maps.Map(document.getElementById('map'), mapOptions);
+      map.fitBounds(results[0].geometry.viewport);
+      posicion = results[0].geometry.location;
+      var marker = new google.maps.Marker({
+      position: results[0].geometry.location,
+      map: map,
+      title: 'Domicilio'
+      });
+      //FUNCION PARA PODER TOMAR LA DIRECCION DE EL POSICION
+      geocoder.geocode({'latLng': posicion}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[0]) {
+  
+              var direccioNueva = results[0].formatted_address;
+              document.getElementById("dirr").value = direccioNueva;
+            }
+          }
+        });
+    }else{
+      alert("No se pudo encontrar la ubicacion"+status);
+    }
+  }*/  
+</script>
