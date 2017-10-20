@@ -71,6 +71,7 @@
     for (i = 0; i < marcadores.length; i++) {  
         marker = new google.maps.Marker({
             position: new google.maps.LatLng(marcadores[i][1], marcadores[i][2]),
+            icon: 'img/iconm.png',
             map: map
         });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
