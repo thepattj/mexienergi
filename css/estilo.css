@@ -899,11 +899,13 @@ option {
 /*======================mapa.html=========================*/
 .mapa{
     width: 100%;
-    height: 100%;
+    height: 88%;
     position: absolute;
     float: left;
+    top:13%;
     /*background: red;*/
 }
+/*
 .buscador{
     position: absolute;
     top: 45px;
@@ -912,12 +914,13 @@ option {
     background-color: transparent;
 }
 
+
 .botonbuscador{
     position: absolute;
     top: 45px;
     z-index: 99;
     width: 85px;
-    /*background-color: red !important;*/
+    //background-color: red !important;
     left: 74.25%;
 }
 
@@ -929,4 +932,4 @@ option {
     height: 30px;
     width: 30px;
     margin-left: 28px;
-}
+}*/
