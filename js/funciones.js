@@ -500,22 +500,6 @@ function mostrarcorte() {
     }
 }
 
-function proximas() {
-    document.getElementById("proxsta").style.display = "block";
-    document.getElementById("menusta").style.display = "none";
-    estac = sessionStorage.getItem("sta");
-    separar = estac.split("*");
-    numero = (estac.length) - 1;
-    alert(separar)
-    /*m = 18; //posicion de los id
-    j = 19; //poscion de nombre
-    for (i = 18; i <= numero; i++) {
-        document.getElementById("proxsta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
-        j = j + 3;
-        m = m + 3;
-    }*/
-}
-
 function vercorte(id) {
     respdat2 = sessionStorage.getItem("sta");
     perm = sessionStorage.getItem("esc");
@@ -886,7 +870,7 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
     sessionStorage.clear();
     window.location.assign(pagina);
 }
-
+    
 function pagina(pagina) { // cambia de paginas
     if(pagina == "semaforo.html"){
         sessionStorage.setItem("truco", 1);
