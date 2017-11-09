@@ -472,13 +472,14 @@ function mostrarcorte() {
             separar = respuesta.split("*");
             numero = (separar.length) - 1;
             m = 0; //posicion de los id
-            j = 1; //poscion de arreglo
+            j = 1; //poscion de nombre
             k = 2; //direccion de imagen
-            l = 0;
+            l=0;
             for (i = 0; i <= numero; i++) {
                 if (separar[m] == 1 || separar[m] == 2 || separar[m] == 3 || separar[m] == 4 || separar[m] == 5 || separar[m] == 6 ){
                     document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
                     
+                    alert(k);
                 }
                 if (separar[m] == 7 || separar[m] == 9 || separar[m] == 10 ){
                     document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
@@ -489,10 +490,9 @@ function mostrarcorte() {
                 }
 
                 j = j + 3;
-                k = k + 3;
                 m = m + 3;
+                k = k + 3;
                 l++;
-                
                 if(separar[m] > 10){ break;}
             }
             //COMO VALIDAR LOS DATOS DE LA RESPUESTA...
