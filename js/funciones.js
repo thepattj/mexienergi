@@ -4,7 +4,7 @@ dir = new Array();
 estaf = new Array();
 vali = new Array();
 dirimg = new Array("http://200.95.237.38/gas/imgsta/aero.jpg","http://200.95.237.38/gas/imgsta/campa.jpg","http://200.95.237.38/gas/imgsta/epig.jpg","http://200.95.237.38/gas/imgsta/northm.jpg","http://200.95.237.38/gas/imgsta/sjr.jpg","http://200.95.237.38/gas/imgsta/tlaco.jpg");
-dirlog = new Array("http://200.95.237.38/gas/logos/iconaeropuerto.png","http://200.95.237.38/gas/logos/icontlacote.png","http://200.95.237.38/gas/logos/iconmacias.png","http://200.95.237.38/gas/logos/iconarcangel.png","http://200.95.237.38/gas/logos/iconepigmenio.png","http://200.95.237.38/gas/logos/iconnorthm.png");
+dirlog = new Array("http://200.95.237.38/gas/logos/iconaeropuerto.png","http://200.95.237.38/gas/logos/icontlacote.png","http://200.95.237.38/gas/logos/iconmacias.png","http://200.95.237.38/gas/logos/iconarcangel.png","http://200.95.237.38/gas/logos/iconepigmenio.png","http://200.95.237.38/gas/logos/iconnorthm.png", "http://200.95.237.38/gas/logos/iconproxr.png");/*"http://200.95.237.38/gas/logos/iconprox.png"*/
 /*datos = new Array();*/
 /*var permiso;
 var estacions;*/
@@ -476,15 +476,24 @@ function mostrarcorte() {
             k = 2; //direccion de imagen
             l = 0;
             for (i = 0; i <= numero; i++) {
-                document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                if (separar[m] == 1 || separar[m] == 2 || separar[m] == 3 || separar[m] == 4 || separar[m] == 5 || separar[m] == 6 ){
+                    document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                    
+                }
+                if (separar[m] == 7 || separar[m] == 9 || separar[m] == 10 ){
+                    document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                    
+                }
+                if (separar[m] == 8){
+                    document.getElementById("menusta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p style='font-size:1.5em'>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                }
+
                 j = j + 3;
                 k = k + 3;
                 m = m + 3;
                 l++;
-                if (j > 16) {
-                   document.getElementById("menusta").innerHTML +="<div class='divrenglon'></div>";
-                   break;
-                }
+                
+                if(separar[m] > 10){ break;}
             }
             //COMO VALIDAR LOS DATOS DE LA RESPUESTA...
         }
