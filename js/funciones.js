@@ -3,8 +3,8 @@ esta = new Array();
 dir = new Array();
 estaf = new Array();
 vali = new Array();
-dirimg = new Array("http://200.95.237.38/gas/imgsta/aero.jpg","http://200.95.237.38/gas/imgsta/campa.jpg","http://200.95.237.38/gas/imgsta/epig.jpg","http://200.95.237.38/gas/imgsta/northm.jpg","http://200.95.237.38/gas/imgsta/sjr.jpg","http://200.95.237.38/gas/imgsta/tlaco.jpg");
-dirlog = new Array("http://200.95.237.38/gas/logos/iconaeropuerto.png","http://200.95.237.38/gas/logos/icontlacote.png","http://200.95.237.38/gas/logos/iconmacias.png","http://200.95.237.38/gas/logos/iconarcangel.png","http://200.95.237.38/gas/logos/iconepigmenio.png","http://200.95.237.38/gas/logos/iconnorthm.png", "http://200.95.237.38/gas/logos/iconproxr.png");/*"http://200.95.237.38/gas/logos/iconprox.png"*/
+dirimg = new Array("http://www.mexienergi.com/aplicacion/imgsta/aero.jpg","http://www.mexienergi.com/aplicacion/imgsta/campa.jpg","http://www.mexienergi.com/aplicacion/imgsta/epig.jpg","http://www.mexienergi.com/aplicacion/imgsta/northm.jpg","http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg","http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg");
+dirlog = new Array("http://www.mexienergi.com/aplicacion/logos/iconaeropuerto.png","http://www.mexienergi.com/aplicacion/logos/icontlacote.png","http://www.mexienergi.com/aplicacion/logos/iconmacias.png","http://www.mexienergi.com/aplicacion/logos/iconarcangel.png","http://www.mexienergi.com/aplicacion/logos/iconepigmenio.png","http://www.mexienergi.com/aplicacion/logos/iconnorthm.png", "http://www.mexienergi.com/aplicacion/logos/iconproxr.png");/*"http://www.mexienergi.com/aplicacion/logos/iconprox.png"*/
 /*datos = new Array();*/
 /*var permiso;
 var estacions;*/
@@ -88,7 +88,7 @@ function entrar(form) { //se recibe completo el form - id de form login
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('correo=' + mail + '&contrasena=' + pass + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -134,7 +134,7 @@ function entrar(form) { //se recibe completo el form - id de form login
     }
 }
 
-function registrar() {
+function registrar() { //muestra el menu para registrar el correo
     paginaInicio = document.querySelector("#formulario");
     paginaRegis = document.querySelector("#formreg");
     paginaInicio.classList.add("rde");
@@ -143,24 +143,39 @@ function registrar() {
     paginaRegis.classList.remove("rde");
 }
 
+function regresar(){ //regresa al menu de inicio
+    paginaInicio = document.querySelector("#formulario");
+    paginaRegis = document.querySelector("#formreg");
+    paginaInicio.classList.remove("rde");
+    paginaInicio.classList.add("riz");
+    paginaRegis.classList.remove("riz");
+    paginaRegis.classList.add("rde");
+}
+
 /*PARA REGISTRO*/
 function conseguir(form) {
     mailG = form.correo.value;
-
-    //SI ES CORRECTO
-    verModal('grande', '', 'Ok', "Se han mando correctamente tu correo.");
-    //POR LO TANTO HACE ESTO
-    paginaInicio = document.querySelector("#formulario");
-    paginaRegis = document.querySelector("#formreg");
-    paginaInicio.classList.add("riz");
-    paginaInicio.classList.remove("rde");
-    paginaRegis.classList.add("rde");
-    paginaRegis.classList.remove("riz");
-
-    // ES INCORRECTO
-    verModal('grande', '', 'Ok', "Hay algun error detro de tu correo.");
-    //No cambias de estilo, esperas a que arregle su problema
-    //aqui tambien se va a saber si es un correo o no
+    if(mailG != ""){
+        enviar = new XMLHttpRequest;
+        /*enviar.open('POST', 'datos.php');*/
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/agregarcorreo.php'); //para empaquetar
+        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviar.send('correo=' + mailG);
+        enviar.onreadystatechange = function () {
+            if (enviar.readyState == 4 && enviar.status == 200) {
+                respuesta = enviar.responseText;
+                if(respuesta == "OK"){
+                    verModal('grande', '', 'Ok', "Se han mando correctamente tu correo.");
+                    regresar();
+                }else{
+                    verModal('grande', '', 'Ok', "Algo a salido mal al enviar.");
+                }
+            }
+        }
+    }
+    if(mailG == ""){
+        verModal('grande', '', 'Ok', "Hay algun error detro de tu correo.");
+    }
 }
 
 /*PARA inicio.html*/
@@ -200,7 +215,7 @@ function llenado() { // llena el select de los servidores
     }
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php')*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('est=' + estaci + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -293,7 +308,7 @@ function enviarS(form) { //pregunta el status de el servidor
     if (dire != 0) {
         enviar = new XMLHttpRequest;
         /*enviar.open('POST', '../../datosgas/datosws.php');*/
-        enviar.open('POST', 'http://200.95.237.38/gas/datosws.php'); //para empaquetar
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datosws.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('estado=' + pedir + '&direcion=' + dire +'&p='+puerto[0]);
         verAlerta('Chico', 'Procesando...',''); //COMO HACER QUE SE ESCRIBA UNA UNICA VEZ
@@ -378,7 +393,7 @@ function cambiarS(form) { //genera una peticion para el cambio de status
         direccion = "";
         enviar = new XMLHttpRequest;
         /*enviar.open('POST', 'datows.php');*/
-        enviar.open('POST', 'http://200.95.237.38/gas/datows.php'); //para empaquetar
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datows.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('cambiar=' + res + '&direcion=' + dire +'&p='+puerto[0]);
         
@@ -418,7 +433,7 @@ function cambiarS(form) { //genera una peticion para el cambio de status
         direccion = "";
         enviar = new XMLHttpRequest;
         /*enviar.open('POST', 'datows.php');*/
-        enviar.open('POST', 'http://200.95.237.38/gas/datows.php'); //para empaquetar
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datows.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('cambiar=' + res + '&direcion=' + dire +'&p='+puerto[0]);
        verAlerta('Chico', 'Procesando...','');
@@ -462,7 +477,7 @@ function mostrarcorte() {
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -542,7 +557,7 @@ function muestrae() {
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('idesta=' + estacione + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -594,7 +609,7 @@ function pormes() { //ventas hasta el dia actual del mes
     flag = "ventaFin";
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', '../../datosgas/datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('idesta=' + estacione + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -628,7 +643,7 @@ function promdmes() { //promedios del mes
     flag = "promedioFin";
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', '../../datosgas/datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('idesta=' + estacione + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -665,7 +680,7 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
     flag = "fechaFin";
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
     enviar.onreadystatechange = function () {
@@ -826,7 +841,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
             if(diafin >= diainicio){
                 enviar = new XMLHttpRequest;
                 /*enviar.open('POST', 'datos.php');*/
-                enviar.open('POST', 'http://200.95.237.38/gas/datoslocal.php'); //para empaquetar
+                enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
                 enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
                 enviar.onreadystatechange = function () {
