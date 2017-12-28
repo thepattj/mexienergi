@@ -81,23 +81,23 @@ function cerrarm() { //BOTON QUE SE CREA
 
 /*PARA INDEX*/
 function entrar(form) { //se recibe completo el form - id de form login
-    mailG = form.correo.value;
-    pass = form.contra.value;
+    mailG = document.getElementById("username").value; //EVALUA LOS INPUTS
+    pass = document.getElementById("userpassword").value; //EVALUA LOS INPUTS
     flag = "inicioSes";
     mail = mailG.toLowerCase();
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //link que hace contacto con el servidor para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    enviar.send('correo=' + mail + '&contrasena=' + pass + '&flag=' + flag);
+    enviar.send('correo=' + mail + '&contrasena=' + pass + '&flag=' + flag);//datos que le manda al php que esta en el server
     enviar.onreadystatechange = function () {
         if (enviar.readyState == 4 && enviar.status == 200) {
             //AQUI ESTA LA RESPUESTA DEL PHP
             respuesta = enviar.responseText;
             /*alert(respuesta);*/
-            desg = respuesta.split('*');
-            acceso = desg[0];
+            desg = respuesta.split('*');//toda la respuesta es dividida por *
+            acceso = desg[0]; //aqui es guardada en localstorage
             if (acceso == "Ingreso Correcto") {
                 psem = desg[1];
                 /*alert(p);*/
@@ -109,18 +109,18 @@ function entrar(form) { //se recibe completo el form - id de form login
                 sessionStorage.setItem("perc", pfc);
                 efc = desg[4];
                 sessionStorage.setItem("esc", efc);
-                if (psem == "1" && pfc == "0") {
-                    location.href = "inicio.html";
+                if (psem == "1" && pfc == "0") { //SOLO VE LOS SEMAFOROS
+                    location.href = "menu.html";
                 }
-                if (pfc == "1" && psem == "0") {
-                    location.href = "inicio.html";
+                if (pfc == "1" && psem == "0") { //SOLO VE LAS FINANZAS
+                    location.href = "menu.html";
                 }
-                if (psem == "1" && pfc == "1") {
-                    location.href = "inicio.html";
+                if (psem == "1" && pfc == "1") { //VE TODO
+                    location.href = "menu.html";
                 }
             }
             if (acceso == "Datos Incorrectos") {
-                verModal('grande', '', 'Ok', "Datos Incorrectos");
+                verModal('grande', '', 'Ok', "Datos Incorrectos");/*ESTE CAMBIA POR UN MODAL QUE EL TENGA*/
                 sessionStorage.clear();
                 document.getElementById("contra").value = "";
                 document.getElementById("correo").value = "";
@@ -134,7 +134,7 @@ function entrar(form) { //se recibe completo el form - id de form login
     }
 }
 
-function registrar() { //muestra el menu para registrar el correo
+/*function registrar() { //muestra el menu para registrar el correo    YA NO EXISTE
     paginaInicio = document.querySelector("#formulario");
     paginaRegis = document.querySelector("#formreg");
     paginaInicio.classList.add("rde");
@@ -143,21 +143,21 @@ function registrar() { //muestra el menu para registrar el correo
     paginaRegis.classList.remove("rde");
 }
 
-function regresar(){ //regresa al menu de inicio
+function regresar(){ //regresa al menu de inicio      YA NO EXISTE
     paginaInicio = document.querySelector("#formulario");
     paginaRegis = document.querySelector("#formreg");
     paginaInicio.classList.remove("rde");
     paginaInicio.classList.add("riz");
     paginaRegis.classList.remove("riz");
     paginaRegis.classList.add("rde");
-}
+}*/
 
 /*PARA REGISTRO*/
-function conseguir(form) {
+/*function conseguir(form) {
     mailG = form.correo.value;
     if(mailG != ""){
         enviar = new XMLHttpRequest;
-        /*enviar.open('POST', 'datos.php');*/
+        enviar.open('POST', 'datos.php');
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/agregarcorreo.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('correo=' + mailG);
@@ -176,33 +176,30 @@ function conseguir(form) {
     if(mailG == ""){
         verModal('grande', '', 'Ok', "Hay algun error detro de tu correo.");
     }
-}
+}*/
 
 /*PARA inicio.html*/
-function vald(){
+function vald(){ // PARA VALIDAR QUE VEN SEGUN LOS PERMISOS.
     s = sessionStorage.getItem("pers");
     e = sessionStorage.getItem("perc");
     if( s == 1 && e == 0){
-        document.getElementById("sem").classList.add("vis");
-        document.getElementById("sem").classList.remove("no");
-        document.getElementById("est").classList.add("no");
-        document.getElementById("su").classList.add("no");
+        document.querySelector("#usernormal").style.display ="block";
+        document.querySelector("#usermaestro").style.display ="none";
+        document.querySelector("#usercorte").style.display ="none";
     }if(e == 1 && s == 0){
-        document.getElementById("est").classList.add("vis");
-        document.getElementById("est").classList.remove("no");
-        document.getElementById("sem").classList.add("no");
-        document.getElementById("su").classList.add("no");
+       document.querySelector("#usercorte").style.display ="block";
+       document.querySelector("#usernormal").style.display ="none";
+       document.querySelector("#usermaestro").style.display ="none";
     }if(e == 1 && s ==1){
-        document.getElementById("su").classList.add("vis");
-        document.getElementById("su").classList.remove("no");
-        document.getElementById("sem").classList.add("no");
-        document.getElementById("est").classList.add("no");
+        document.querySelector("#usermaestro").style.display ="block";
+        document.querySelector("#usercorte").style.display ="none";
+        document.querySelector("#usernormal").style.display ="none";
     }
 }
 
-function progres(){
+/*function progres(){
     verModal('grande', '', 'Ok', "En construcción...");
-}
+}*/
 
 /*PARA semaforo.html*/
 function llenado() { // llena el select de los servidores
@@ -466,7 +463,9 @@ function cambiarS(form) { //genera una peticion para el cambio de status
     }
 }
 
-/*PARA CORTE.HTML*/
+
+
+/*PARA BIENVENIDA.HTML*/
 function mostrarcorte() {
     flag = "inicioFin";
     mostrar = sessionStorage.getItem("truco");
@@ -492,14 +491,16 @@ function mostrarcorte() {
             l=0;
             for (i = 0; i <= numero; i++) {
                 if (separar[m] == 1 || separar[m] == 2 || separar[m] == 3 || separar[m] == 4 || separar[m] == 5 || separar[m] == 6 ){
-                    document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
+                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
                 }
                 if (separar[m] == 7 || separar[m] == 9 || separar[m] == 10 ){
-                    document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";
-                    
+                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
+                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
                 }
                 if (separar[m] == 8){
-                    document.getElementById("menusta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p style='font-size:1.5em'>"+separar[j]+"</p></div>"+"</div>"+"</div>";
+                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p style='font-size:1.5em'>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
+                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
                 }
 
                 j = j + 3;
@@ -545,7 +546,7 @@ function vercorte(id) {
     for (m = 0; m <= numero2; m++) {
         if (estacions == vali[m]) {
             sessionStorage.setItem("staact", estacions);
-            location.href = "estacion.html";
+            location.href = "estaciones.html";
         }
     }
 }
@@ -569,23 +570,23 @@ function muestrae() {
             sessionStorage.setItem("fecha", fecha);
             document.getElementById("nombre").innerHTML = datos[0];
             if(datos[0] == "AEROPUERTO"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[0];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[0]+')';
             }if(datos[0] == "TLACOTE"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[5];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[5]+')';
             }if(datos[0] == "MACIAS"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[4];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[4]+')';
             }if(datos[0] == "ARCANGEL"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[1];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[1]+')';
             }if(datos[0] == "EPIGMENIO"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[2];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[2]+')';
             }if(datos[0] == "NORTHM"){
-                image = document.getElementById("bannersta");
-                image.src = dirimg[3];
+                image = document.querySelector("#bannersta");
+                image.style.backgroundImage = 'url('+dirimg[3]+')';
             }
             document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
             document.getElementById("preciom").innerHTML = "$" + datos[3];
@@ -717,108 +718,64 @@ function tipoCorte(cambio) {
     prom = document.querySelector("#promedio");
     ranf = document.querySelector("#rango");
     if (opcion == "corte") {
-        diac.classList.add("ver");
-        diac.classList.remove("nv");
-        document.getElementById("cortet").style.borderBottom = "2px solid #f60908";
-        image = document.getElementById("cortei");
-        image.src = "img/icon/corteselec.png";
-        
+        diac.style.display = "block";
+        document.querySelector("#titulo").style.display="block";
+        document.querySelector("#tcor").style.display="block";
 
-        porm.classList.add("nv");
-        porm.classList.remove("ver");
-        document.getElementById("pmest").style.borderBottom = "none";
-        image = document.getElementById("mesi");
-        image.src = "img/icon/mes.png";
-
-        prom.classList.add("nv");
-        prom.classList.remove("ver");
-        document.getElementById("promediot").style.borderBottom = "none";
-        image = document.getElementById("promedi");
-        image.src = "img/icon/promedio.png";
-
-        ranf.classList.add("nv");
-        ranf.classList.remove("ver");
-        document.getElementById("rfechat").style.borderBottom = "none";
-        image = document.getElementById("rangoi");
-        image.src = "img/icon/rango.png";
+        porm.style.display = "none";
+        document.querySelector("#titulo2").style.display="none";
+        document.querySelector("#tmes").style.display="none";
+        prom.style.display = "none";
+        document.querySelector("#titulo3").style.display="none";
+        document.querySelector("#tprom").style.display="none";
+        ranf.style.display = "none"
+        document.querySelector("#titulo4").style.display="none";
+        document.querySelector("#tper").style.display="none";
     }
     if (opcion == "pmes") {
-        porm.classList.add("ver");
-        porm.classList.remove("nv");
-        document.getElementById("pmest").style.borderBottom = "2px solid #f60908";
-        image = document.getElementById("mesi");
-        image.src = "img/icon/meselect.png";
-
-        diac.classList.add("nv");
-        diac.classList.remove("ver");
-        document.getElementById("cortet").style.borderBottom = "none";
-        image = document.getElementById("cortei");
-        image.src = "img/icon/corte.png";
-
-        prom.classList.add("nv");
-        prom.classList.remove("ver");
-        document.getElementById("promediot").style.borderBottom = "none";
-        image = document.getElementById("promedi");
-        image.src = "img/icon/promedio.png";
-
-        ranf.classList.add("nv");
-        ranf.classList.remove("ver");
-        document.getElementById("rfechat").style.borderBottom = "none";
-        image = document.getElementById("rangoi");
-        image.src = "img/icon/rango.png";
+        porm.style.display = "block";
+        document.querySelector("#titulo2").style.display="block";
+        document.querySelector("#tmes").style.display="block";
+        diac.style.display = "none";
+        document.querySelector("#titulo").style.display="none";
+        document.querySelector("#tcor").style.display="none";
+        prom.style.display = "none";
+        document.querySelector("#titulo3").style.display="none";
+        document.querySelector("#tprom").style.display="none";
+        ranf.style.display = "none";
+        document.querySelector("#titulo4").style.display="none";
+        document.querySelector("#tper").style.display="none";
         pormes();
     }
     if (opcion == "promedio") {
-        prom.classList.add("ver");
-        prom.classList.remove("nv");
-        document.getElementById("promediot").style.borderBottom = "2px solid #f60908";
-        image = document.getElementById("promedi");
-        image.src = "img/icon/promedioselect.png";
-
-        diac.classList.add("nv");
-        diac.classList.remove("ver");
-        document.getElementById("cortet").style.borderBottom = "none";
-        image = document.getElementById("cortei");
-        image.src = "img/icon/corte.png";
-
-        porm.classList.add("nv");
-        porm.classList.remove("ver");
-        document.getElementById("pmest").style.borderBottom = "none";
-        image = document.getElementById("mesi");
-        image.src = "img/icon/mes.png"
-
-        ranf.classList.add("nv");
-        ranf.classList.remove("ver");
-        document.getElementById("rfechat").style.borderBottom = "none";
-        image = document.getElementById("rangoi");
-        image.src = "img/icon/rango.png";
+        prom.style.display = "block";
+        document.querySelector("#titulo3").style.display="block";
+        document.querySelector("#tprom").style.display="block";
+        diac.style.display = "none";
+        document.querySelector("#titulo").style.display="none";
+        document.querySelector("#tcor").style.display="none";
+        porm.style.display = "none";
+        document.querySelector("#titulo2").style.display="none";
+        document.querySelector("#tmes").style.display="none";
+        ranf.style.display = "none";
+        document.querySelector("#titulo4").style.display="none";
+        document.querySelector("#tper").style.display="none";
         promdmes();
     }
     if (opcion == "rfecha") {
-        ranf.classList.add("ver");
-        ranf.classList.remove("nv");
-        document.getElementById("rfechat").style.borderBottom = "2px solid #f60908";
-        image = document.getElementById("rangoi");
-        image.src = "img/icon/rangoselect.png";
-
-        diac.classList.add("nv");
-        diac.classList.remove("ver");
-        document.getElementById("cortet").style.borderBottom = "none";
-        image = document.getElementById("cortei");
-        image.src = "img/icon/corte.png";
-
-        porm.classList.add("nv");
-        porm.classList.remove("ver");
-        document.getElementById("pmest").style.borderBottom = "none";
-        image = document.getElementById("mesi");
-        image.src = "img/icon/mes.png"
-
-        prom.classList.add("nv");
-        prom.classList.remove("ver");
-        document.getElementById("promediot").style.borderBottom = "none";
-        image = document.getElementById("promedi");
-        image.src = "img/icon/promedio.png";
-        porfecha()
+        ranf.style.display = "block";
+        document.querySelector("#titulo4").style.display="block";
+        document.querySelector("#tper").style.display="block";
+        diac.style.display = "none";
+        document.querySelector("#titulo").style.display="none";
+        document.querySelector("#tcor").style.display="none";
+        porm.style.display = "none";
+        document.querySelector("#titulo2").style.display="none";
+        document.querySelector("#tmes").style.display="none";
+        prom.style.display = "none";
+        document.querySelector("#titulo3").style.display="none";
+        document.querySelector("#tprom").style.display="none";
+        porfecha();
     }
 }
 
@@ -884,7 +841,8 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
     window.location.assign(pagina);
 }
     
-function pagina(pagina) { // cambia de paginas
+//YA NO SIRVE 
+/*function pagina(pagina) { // cambia de paginas
     if(pagina == "semaforo.html"){
         sessionStorage.setItem("truco", 1);
         window.location.assign(pagina);        
@@ -899,4 +857,4 @@ function pagina(pagina) { // cambia de paginas
         window.location.assign(pagina);
         sessionStorage.setItem("truco", 0);
     }    
-}
+}*/

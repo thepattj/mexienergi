@@ -1,0 +1,107 @@
+/*================================================================================
+	Item Name: Stack - Responsive Admin Theme
+	Version: 1.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+/*
+gris               #bbbbbb
+verde transparente #42b69d
+verde original     #ff2600
+verde lijero 	   #01745a
+verde fuerte	   #00372b
+verde fuerte	   #00372b
+*/
+
+.logo-text {
+    width: 136px;
+}
+
+.main-menu.menu-dark {
+    color: #dcdcdc;
+    background: #ff2600;
+}
+
+.navbar-semi-dark .navbar-header {
+    background: #ff2600;
+}
+
+.main-menu.menu-dark .navigation {
+    background: #ff2600;
+}
+
+.main-menu.menu-dark .navigation > li.hover > a, .main-menu.menu-dark .navigation > li:hover > a, .main-menu.menu-dark .navigation > li.active > a {
+    color: #FFF;
+    background-color: #b61c01;
+}
+
+.main-menu.menu-dark .navigation > li.open .hover > a {
+    background: #01745a;
+}
+
+.main-menu.menu-dark .navigation > li > ul {
+    background: #01745a;
+}
+
+.main-menu.menu-dark .navigation > li.open > a {
+    color: #FFF;
+    background: #00372b;
+}
+
+.main-menu.menu-dark .navigation > li.open {
+    border-left: 4px solid #e8e8e8;
+}
+
+.main-menu.menu-dark .navigation > li ul .active > a {
+    color: #FFF;
+    font-weight: 500;
+}
+
+html body .pace .pace-progress {
+    background: #e8e8e8;
+}
+
+.main-menu.menu-dark .navigation > li {
+    padding: 0;
+    border-left: 4px solid transparent;
+}
+
+.main-menu.menu-dark .navigation > li > a i {
+    position: relative;
+    top: 1px !important;
+}
+
+.listado_gas {
+    list-style-type: none;
+    padding-bottom: 20px;
+}
+
+.boton_listado {
+    background-color: #f72500 !important; 
+    border-color: #e82401 !important; 
+    color: #FFF;
+}
+
+.boton_listado:hover {
+    background-color: #f72500 !important; 
+    border-color: #e82401 !important; 
+    color: #FFF !important;
+}
+
+.card {
+    background-color: #dedede !important;
+}
+
+.card-header {
+    background-color: #dedede !important;
+}
+
+.app-content.content.container-fluid {
+    background-color: #dedede;
+}
