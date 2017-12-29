@@ -500,7 +500,7 @@ function mostrarcorte() {
                 }
                 if (separar[m] == 8){
                     /*document.getElementById("menusta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p style='font-size:1.5em'>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
-                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
+                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado' style='font-size:1em;'>"+separar[j]+"</a></div><div style='clear:both'></div>";
                 }
 
                 j = j + 3;
