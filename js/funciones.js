@@ -731,6 +731,7 @@ function tipoCorte(cambio) {
         ranf.style.display = "none"
         document.querySelector("#titulo4").style.display="none";
         document.querySelector("#tper").style.display="none";
+        document.querySelector("#fechapet").style.display ="none";
     }
     if (opcion == "pmes") {
         porm.style.display = "block";
@@ -745,6 +746,7 @@ function tipoCorte(cambio) {
         ranf.style.display = "none";
         document.querySelector("#titulo4").style.display="none";
         document.querySelector("#tper").style.display="none";
+        document.querySelector("#fechapet").style.display ="none";
         pormes();
     }
     if (opcion == "promedio") {
@@ -760,12 +762,14 @@ function tipoCorte(cambio) {
         ranf.style.display = "none";
         document.querySelector("#titulo4").style.display="none";
         document.querySelector("#tper").style.display="none";
+        document.querySelector("#fechapet").style.display ="none";
         promdmes();
     }
     if (opcion == "rfecha") {
         ranf.style.display = "block";
         document.querySelector("#titulo4").style.display="block";
         document.querySelector("#tper").style.display="block";
+        document.querySelector("#fechapet").style.display ="block";
         diac.style.display = "none";
         document.querySelector("#titulo").style.display="none";
         document.querySelector("#tcor").style.display="none";
@@ -781,8 +785,8 @@ function tipoCorte(cambio) {
 
 function enviarF(form) { //rango de fecha se acciona con el boton
     estacione = sessionStorage.getItem("staact");
-    finicio = form.fechai.value;
-    ffin = form.fechaf.value;
+    finicio = document.getElementById("fechai").value;
+    ffin = document.getElementById("fechaf").value;
     /*alert("CARGA DE LA ESTACION PARA MOSTRAR EL DIV CORRECTO CON EL ID EXACTO"+estacione);*/
     flag = "fechaFin";
     finicio = finicio.split('-').reverse().join('/');
