@@ -67,37 +67,92 @@ function verAlerta(tipo, texto, parrafo) { //MODAL DE ALERTA
     tipo = tipo;
 }
 
-function cerrarm() { //BOTON QUE SE CREA
-    bgNegro.classList.remove('verModal');
-    menu.classList.remove('verModal');
 
-    if (menu.classList.contains('lateral')) {
-        menu.classList.remove('lateral');
+function vermenu(){
+    s = sessionStorage.getItem("pers");
+    e = sessionStorage.getItem("perc");
+
+    bgNegros = document.getElementById('bg-negros');
+    modals = document.getElementById('modals');
+
+    bgNegros.classList.add('verModal');
+    modals.classList.add('verModal');
+
+
+    if( s == 1 && e == 0){
+        /*alert("semaforo");*/
+        document.getElementById('semaforo').style.display = "block";
+        document.getElementById('corte').style.display = "none";
+        document.getElementById('su').style.display = "none";
+    }if(e == 1 && s == 0){
+        /*alert("corte");*/
+        document.getElementById('corte').style.display = "block";
+        document.getElementById('semaforo').style.display = "none";
+        document.getElementById('su').style.display = "none";
+    }if(e == 1 && s ==1){
+        document.getElementById('su').style.display = "block";
+        document.getElementById('corte').style.display = "none";
+        document.getElementById('semaforo').style.display = "none";
+       /*alert("SUperU");*/
+    }   
+}
+
+/*function menuhead(tipo, texto, texto2, texto3, texto4, texto5, parrafo){
+    bgNegros = document.getElementById('bg-negros');
+    modals = document.getElementById('modals');
+
+    bgNegros.classList.add('verModal');
+    modals.classList.add('verModal');
+
+    if (tipo == 'chico') {
+        parrafo = ""
     } else {
-        menu.classList.remove('grande');
+        parrafo = parrafo;
+    }
+
+    modals.innerHTML+= "<h1 style='color: white;' onclick='pagina(\""+'inicio.html'+"\")'>" + texto + "</h1>" +
+                       "<h1 style='color: white;' onclick='pagina(\""+'corte.html'+"\")'>" + texto2 + "</h1>" +
+                       "<h1 style='color: white;' onclick='pagina(\""+'mapa.html'+"\")'>" + texto3 + "</h1>" +
+                       "<h1 style='color: white;' onclick='pagina(\""+'semaforo.html'+"\")'>" + texto4 + "</h1>" +
+                       "<h1 style='color: white;' onclick=' salir() '>" + texto5 + "</h1>" +
+                       "<div class='div3'></div>";
+
+    modals.classList.add(tipo);
+
+    tipo = tipo;
+}*/
+
+function cerrarms() { //BOTON QUE SE CREA
+    bgNegros.classList.remove('verModal');
+    modals.classList.remove('verModal');
+
+    if (modals.classList.contains('derecho')) {
+        modals.classList.remove('derecho');
+    } else {
+        modals.classList.remove('derecho');
     }
 }
 
 
 /*PARA INDEX*/
 function entrar(form) { //se recibe completo el form - id de form login
-    mailG = document.getElementById("username").value; //EVALUA LOS INPUTS
-    pass = document.getElementById("userpassword").value; //EVALUA LOS INPUTS
+    mailG = form.correo.value;
+    pass = form.contra.value;
     flag = "inicioSes";
     mail = mailG.toLowerCase();
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
-    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //link que hace contacto con el servidor para empaquetar
+    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    enviar.send('correo=' + mail + '&contrasena=' + pass + '&flag=' + flag);//datos que le manda al php que esta en el server
+    enviar.send('correo=' + mail + '&contrasena=' + pass + '&flag=' + flag);
     enviar.onreadystatechange = function () {
         if (enviar.readyState == 4 && enviar.status == 200) {
             //AQUI ESTA LA RESPUESTA DEL PHP
             respuesta = enviar.responseText;
             /*alert(respuesta);*/
-            desg = respuesta.split('*');//toda la respuesta es dividida por *
-            acceso = desg[0]; //aqui es guardada en localstorage
+            desg = respuesta.split('*');
+            acceso = desg[0];
             if (acceso == "Ingreso Correcto") {
                 psem = desg[1];
                 /*alert(p);*/
@@ -109,18 +164,18 @@ function entrar(form) { //se recibe completo el form - id de form login
                 sessionStorage.setItem("perc", pfc);
                 efc = desg[4];
                 sessionStorage.setItem("esc", efc);
-                if (psem == "1" && pfc == "0") { //SOLO VE LOS SEMAFOROS
-                    location.href = "menu.html";
+                if (psem == "1" && pfc == "0") {
+                    location.href = "inicio.html";
                 }
-                if (pfc == "1" && psem == "0") { //SOLO VE LAS FINANZAS
-                    location.href = "menu.html";
+                if (pfc == "1" && psem == "0") {
+                    location.href = "inicio.html";
                 }
-                if (psem == "1" && pfc == "1") { //VE TODO
-                    location.href = "menu.html";
+                if (psem == "1" && pfc == "1") {
+                    location.href = "inicio.html";
                 }
             }
             if (acceso == "Datos Incorrectos") {
-                verModal('grande', '', 'Ok', "Datos Incorrectos");/*ESTE CAMBIA POR UN MODAL QUE EL TENGA*/
+                verModal('grande', '', 'Ok', "Datos Incorrectos");
                 sessionStorage.clear();
                 document.getElementById("contra").value = "";
                 document.getElementById("correo").value = "";
@@ -134,7 +189,7 @@ function entrar(form) { //se recibe completo el form - id de form login
     }
 }
 
-/*function registrar() { //muestra el menu para registrar el correo    YA NO EXISTE
+function registrar() { //muestra el menu para registrar el correo
     paginaInicio = document.querySelector("#formulario");
     paginaRegis = document.querySelector("#formreg");
     paginaInicio.classList.add("rde");
@@ -143,21 +198,21 @@ function entrar(form) { //se recibe completo el form - id de form login
     paginaRegis.classList.remove("rde");
 }
 
-function regresar(){ //regresa al menu de inicio      YA NO EXISTE
+function regresar(){ //regresa al menu de inicio
     paginaInicio = document.querySelector("#formulario");
     paginaRegis = document.querySelector("#formreg");
     paginaInicio.classList.remove("rde");
     paginaInicio.classList.add("riz");
     paginaRegis.classList.remove("riz");
     paginaRegis.classList.add("rde");
-}*/
+}
 
 /*PARA REGISTRO*/
-/*function conseguir(form) {
+function conseguir(form) {
     mailG = form.correo.value;
     if(mailG != ""){
         enviar = new XMLHttpRequest;
-        enviar.open('POST', 'datos.php');
+        /*enviar.open('POST', 'datos.php');*/
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/agregarcorreo.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('correo=' + mailG);
@@ -176,40 +231,39 @@ function regresar(){ //regresa al menu de inicio      YA NO EXISTE
     if(mailG == ""){
         verModal('grande', '', 'Ok', "Hay algun error detro de tu correo.");
     }
-}*/
+}
 
 /*PARA inicio.html*/
-function vald(){ // PARA VALIDAR QUE VEN SEGUN LOS PERMISOS.
+function vald(){
     s = sessionStorage.getItem("pers");
     e = sessionStorage.getItem("perc");
     if( s == 1 && e == 0){
-        document.querySelector("#usernormal").style.display ="block";
-        document.querySelector("#usermaestro").style.display ="none";
-        document.querySelector("#usercorte").style.display ="none";
+        document.getElementById("sem").classList.add("vis");
+        document.getElementById("sem").classList.remove("no");
+        document.getElementById("est").classList.add("no");
+        document.getElementById("su").classList.add("no");
     }if(e == 1 && s == 0){
-       document.querySelector("#usercorte").style.display ="block";
-       document.querySelector("#usernormal").style.display ="none";
-       document.querySelector("#usermaestro").style.display ="none";
+        document.getElementById("est").classList.add("vis");
+        document.getElementById("est").classList.remove("no");
+        document.getElementById("sem").classList.add("no");
+        document.getElementById("su").classList.add("no");
     }if(e == 1 && s ==1){
-        document.querySelector("#usermaestro").style.display ="block";
-        document.querySelector("#usercorte").style.display ="none";
-        document.querySelector("#usernormal").style.display ="none";
+        document.getElementById("su").classList.add("vis");
+        document.getElementById("su").classList.remove("no");
+        document.getElementById("sem").classList.add("no");
+        document.getElementById("est").classList.add("no");
     }
 }
 
-/*function progres(){
+function progres(){
     verModal('grande', '', 'Ok', "En construcción...");
-}*/
+}
 
 /*PARA semaforo.html*/
 function llenado() { // llena el select de los servidores
     estaci = sessionStorage.getItem("ess");
     mostrar = sessionStorage.getItem("truco");
     flag = "inicioSer";
-    if(mostrar == 1){
-        document.querySelector(".header").style.display = "none";
-        document.querySelector(".user").style.display = "block"
-    }
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php')*/
     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
@@ -339,8 +393,8 @@ function enviarS(form) { //pregunta el status de el servidor
 
 
 
-                        document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
-                        document.getElementById("cambio").border = "rgba(35,125,69,.8)";
+                        document.getElementById("cambio").style.backgroundColor = "#005845";
+                        document.getElementById("cambio").border = "#005845";
                         document.getElementById("cambio").disabled = false;
                     }
                     if (estado == "Apagado") {
@@ -352,15 +406,15 @@ function enviarS(form) { //pregunta el status de el servidor
 
 
 
-                        document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
-                        document.getElementById("cambio").border = "rgba(35,125,69,.8)";
+                        document.getElementById("cambio").style.backgroundColor = "#005845";
+                        document.getElementById("cambio").border = "#005845";
                         document.getElementById("cambio").disabled = false;
                     }
 
                 } else {
                     verModal('grande', '', 'Ok', "Hay un error en el servidor, favor de reportar");
-                    document.getElementById("estado").style.backgroundColor = "rgba(35,125,69,.8)";
-                    document.getElementById("estado").style.border = "rgba(35,125,69,.8)";
+                    document.getElementById("estado").style.backgroundColor = "#005845";
+                    document.getElementById("estado").style.border = "#005845";
                     document.getElementById("estado").disabled = false;
 
                     document.getElementById("dstado").innerHTML = "Status";
@@ -415,8 +469,8 @@ function cambiarS(form) { //genera una peticion para el cambio de status
                     document.getElementById("estado").style.border = "grey";
                     document.getElementById("estado").disabled = true;
 
-                    document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
-                    document.getElementById("cambio").border = "rgba(35,125,69,.8)";
+                    document.getElementById("cambio").style.backgroundColor = "#005845";
+                    document.getElementById("cambio").border = "#005845";
                     document.getElementById("cambio").disabled = false;
                 }
 
@@ -454,8 +508,8 @@ function cambiarS(form) { //genera una peticion para el cambio de status
                     document.getElementById("estado").style.border = "grey";
                     document.getElementById("estado").disabled = true;
 
-                    document.getElementById("cambio").style.backgroundColor = "rgba(35,125,69,.8)";
-                    document.getElementById("cambio").border = "rgba(35,125,69,.8)";
+                    document.getElementById("cambio").style.backgroundColor = "#005845";
+                    document.getElementById("cambio").border = "#005845";
                     document.getElementById("cambio").disabled = false;
                 }
             }
@@ -463,16 +517,14 @@ function cambiarS(form) { //genera una peticion para el cambio de status
     }
 }
 
-
-
-/*PARA BIENVENIDA.HTML*/
+/*PARA CORTE.HTML*/
 function mostrarcorte() {
     flag = "inicioFin";
     mostrar = sessionStorage.getItem("truco");
-    if(mostrar == 1){
+    /*if(mostrar == 1){
         document.querySelector(".header").style.display = "none";
         document.querySelector(".user").style.display = "block"
-    }
+    }*/
 
     enviar = new XMLHttpRequest;
     /*enviar.open('POST', 'datos.php');*/
@@ -491,16 +543,13 @@ function mostrarcorte() {
             l=0;
             for (i = 0; i <= numero; i++) {
                 if (separar[m] == 1 || separar[m] == 2 || separar[m] == 3 || separar[m] == 4 || separar[m] == 5 || separar[m] == 6 ){
-                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[l]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
-                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
                 if (separar[m] == 7 || separar[m] == 9 || separar[m] == 10 ){
-                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' onclick='' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
-                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado'>"+separar[j]+"</a></div><div style='clear:both'></div>";
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
                 if (separar[m] == 8){
-                    /*document.getElementById("menusta").innerHTML += "<div class='divestacion' id='"+separar[m]+"'>"+"<div class='div1'>"+" <div class='div20'> <img src='"+dirlog[6]+"' id='iconesta'> </div> <div class='div80'><p style='font-size:1.5em'>"+separar[j]+"</p></div>"+"</div>"+"</div>";*/
-                    document.getElementById("iniciolistado").innerHTML += "<li class='listado_gas' onclick='vercorte(this.id)' id='"+separar[m]+"'><div style='float: left; width: 15%;'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 40px'></div> <div style='float: left; width: 85%'><a href='#' class='btn btn-lg btn-block boton_listado' style='font-size:1em;'>"+separar[j]+"</a></div><div style='clear:both'></div>";
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:5%; color: white; font-size: .8em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
 
                 j = j + 3;
@@ -546,7 +595,7 @@ function vercorte(id) {
     for (m = 0; m <= numero2; m++) {
         if (estacions == vali[m]) {
             sessionStorage.setItem("staact", estacions);
-            location.href = "estaciones.html";
+            location.href = "estacion.html";
         }
     }
 }
@@ -570,23 +619,23 @@ function muestrae() {
             sessionStorage.setItem("fecha", fecha);
             document.getElementById("nombre").innerHTML = datos[0];
             if(datos[0] == "AEROPUERTO"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[0]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[0];
             }if(datos[0] == "TLACOTE"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[5]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[5];
             }if(datos[0] == "MACIAS"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[4]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[4];
             }if(datos[0] == "ARCANGEL"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[1]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[1];
             }if(datos[0] == "EPIGMENIO"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[2]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[2];
             }if(datos[0] == "NORTHM"){
-                image = document.querySelector("#bannersta");
-                image.style.backgroundImage = 'url('+dirimg[3]+')';
+                image = document.getElementById("bannersta");
+                image.src = dirimg[3];
             }
             document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
             document.getElementById("preciom").innerHTML = "$" + datos[3];
@@ -713,80 +762,87 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
 
 function tipoCorte(cambio) {
     opcion = cambio;
-    diac = document.querySelector("#corte");
+    /*diac = document.getElementById('corte');*/
     porm = document.querySelector("#mes");
     prom = document.querySelector("#promedio");
     ranf = document.querySelector("#rango");
     if (opcion == "corte") {
-        diac.style.display = "block";
-        document.querySelector("#titulo").style.display="block";
-        document.querySelector("#tcor").style.display="block";
+        document.getElementById('cortem').classList.add("ver");
+        document.getElementById('cortem').classList.remove("nv");
+        document.getElementById("cortet").style.borderBottom = "2px solid #f60908";        
 
-        porm.style.display = "none";
-        document.querySelector("#titulo2").style.display="none";
-        document.querySelector("#tmes").style.display="none";
-        prom.style.display = "none";
-        document.querySelector("#titulo3").style.display="none";
-        document.querySelector("#tprom").style.display="none";
-        ranf.style.display = "none"
-        document.querySelector("#titulo4").style.display="none";
-        document.querySelector("#tper").style.display="none";
-        document.querySelector("#fechapet").style.display ="none";
+        porm.classList.add("nv");
+        porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+
+        prom.classList.add("nv");
+        prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+
+        ranf.classList.add("nv");
+        ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
     }
     if (opcion == "pmes") {
-        porm.style.display = "block";
-        document.querySelector("#titulo2").style.display="block";
-        document.querySelector("#tmes").style.display="block";
-        diac.style.display = "none";
-        document.querySelector("#titulo").style.display="none";
-        document.querySelector("#tcor").style.display="none";
-        prom.style.display = "none";
-        document.querySelector("#titulo3").style.display="none";
-        document.querySelector("#tprom").style.display="none";
-        ranf.style.display = "none";
-        document.querySelector("#titulo4").style.display="none";
-        document.querySelector("#tper").style.display="none";
-        document.querySelector("#fechapet").style.display ="none";
+        porm.classList.add("ver");
+        porm.classList.remove("nv");
+        document.getElementById("pmest").style.borderBottom = "2px solid #f60908";
+
+        document.getElementById('cortem').classList.remove("ver");
+        document.getElementById('cortem').classList.add("nv");        
+        document.getElementById("cortet").style.borderBottom = "none";
+
+        prom.classList.add("nv");
+        prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+
+        ranf.classList.add("nv");
+        ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
         pormes();
     }
     if (opcion == "promedio") {
-        prom.style.display = "block";
-        document.querySelector("#titulo3").style.display="block";
-        document.querySelector("#tprom").style.display="block";
-        diac.style.display = "none";
-        document.querySelector("#titulo").style.display="none";
-        document.querySelector("#tcor").style.display="none";
-        porm.style.display = "none";
-        document.querySelector("#titulo2").style.display="none";
-        document.querySelector("#tmes").style.display="none";
-        ranf.style.display = "none";
-        document.querySelector("#titulo4").style.display="none";
-        document.querySelector("#tper").style.display="none";
-        document.querySelector("#fechapet").style.display ="none";
+        prom.classList.add("ver");
+        prom.classList.remove("nv");
+        document.getElementById("promediot").style.borderBottom = "2px solid #f60908";
+
+        document.getElementById('cortem').classList.add("nv");
+        document.getElementById('cortem').classList.remove("ver");
+        document.getElementById("cortet").style.borderBottom = "none";
+
+        porm.classList.add("nv");
+        porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+
+        ranf.classList.add("nv");
+        ranf.classList.remove("ver");
+        document.getElementById("rfechat").style.borderBottom = "none";
         promdmes();
     }
     if (opcion == "rfecha") {
-        ranf.style.display = "block";
-        document.querySelector("#titulo4").style.display="block";
-        document.querySelector("#tper").style.display="block";
-        document.querySelector("#fechapet").style.display ="block";
-        diac.style.display = "none";
-        document.querySelector("#titulo").style.display="none";
-        document.querySelector("#tcor").style.display="none";
-        porm.style.display = "none";
-        document.querySelector("#titulo2").style.display="none";
-        document.querySelector("#tmes").style.display="none";
-        prom.style.display = "none";
-        document.querySelector("#titulo3").style.display="none";
-        document.querySelector("#tprom").style.display="none";
-        porfecha();
+        ranf.classList.add("ver");
+        ranf.classList.remove("nv");
+        document.getElementById("rfechat").style.borderBottom = "2px solid #f60908";
+
+        document.getElementById('cortem').classList.add("nv");
+        document.getElementById('cortem').classList.remove("ver");
+        document.getElementById("cortet").style.borderBottom = "none";
+
+        porm.classList.add("nv");
+        porm.classList.remove("ver");
+        document.getElementById("pmest").style.borderBottom = "none";
+
+        prom.classList.add("nv");
+        prom.classList.remove("ver");
+        document.getElementById("promediot").style.borderBottom = "none";
+        porfecha()
     }
 }
 
 function enviarF(form) { //rango de fecha se acciona con el boton
     estacione = sessionStorage.getItem("staact");
-    finicio = document.getElementById("fechai").value;
-    ffin = document.getElementById("fechaf").value;
+    finicio = form.fechai.value;
+    ffin = form.fechaf.value;
     /*alert("CARGA DE LA ESTACION PARA MOSTRAR EL DIV CORRECTO CON EL ID EXACTO"+estacione);*/
     flag = "fechaFin";
     finicio = finicio.split('-').reverse().join('/');
@@ -845,8 +901,7 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
     window.location.assign(pagina);
 }
     
-//YA NO SIRVE 
-/*function pagina(pagina) { // cambia de paginas
+function pagina(pagina) { // cambia de paginas
     if(pagina == "semaforo.html"){
         sessionStorage.setItem("truco", 1);
         window.location.assign(pagina);        
@@ -861,4 +916,4 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
         window.location.assign(pagina);
         sessionStorage.setItem("truco", 0);
     }    
-}*/
+}

@@ -1,0 +1,944 @@
+/*
+    Colores
+    Base        #0D632D #FC3C04 / 4,148,68
+    Blancos     #FBFBFB #97AFB4/ 103,188,140
+    Negros      #000000 / 9,71,37 
+    azules      #2E7BA5 #6BC9C3 / 30,114,154
+    rojos       #AF0800 / 220,44,51 - #F60908 / shell208,48,6
+    amarillos   #FAF20B / shell244,148,38
+    verdes      #237D45 /
+    
+*/
+
+@font-face {
+    font-family: Monserrat;
+    src: url(../fuente/Montserrat-Regular.ttf)
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Monserrat, cursive;
+    color: black;
+}
+
+
+/*============DIV====================*/
+
+.div1,
+.div2,
+.div3,
+.div4,
+.div5,
+.div6,
+.div7,
+.div8,
+.div9,
+.div10,
+.div11,
+.div12,
+.divfooter,
+.div20,
+.div60,
+.div30,
+.div32,
+.div40,
+.div26,
+.div75,
+.div05,
+.div80,
+.div121 {
+    float: left;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.div1 {
+    width: 99%;
+}
+
+.div121 {
+    width: 99%;
+}
+
+/*cambiar a 8.25%*/
+
+.div2 {
+    width: 48.5%;
+}
+
+.div3 {
+    width: 32%;
+}
+
+.div4 {
+    width: 24%;
+}
+
+.div5 {
+    width: 19.8%;
+}
+
+.div6 {
+    width: 16.5%;
+}
+
+.div7 {
+    width: 14.14%;
+}
+
+.div8 {
+    width: 12.37%;
+}
+
+.div9 {
+    width: 11%;
+}
+
+.div10 {
+    width: 9.9%;
+}
+
+.div11 {
+    width: 9%;
+}
+
+.div12 {
+    width: 8.25%;
+}
+
+.div30 {
+    width: 28.5%;
+}
+
+.div32 {
+    width: 32%;
+}
+
+.div20 {
+    width: 20%;
+}
+
+.div26 {
+    width: 25.4%;
+}
+
+.div40 {
+    width: 38.5%;
+}
+
+.div60 {
+    width: 58%;
+}
+
+.div70 {
+    width: 68%;
+}
+
+.div75{
+    width: 36.3%;
+}
+
+.div80 {
+    width: 78%;
+}
+
+.div90 {
+    width: 88%;
+}
+
+.div05{
+    width: 5%;
+}
+
+
+/* .divfooter{ width: 18.8%; } */
+
+h5 {
+    color: black;
+    font-size: .7em;
+    margin: -2%;
+}
+
+h4 {
+    color: black;
+    font-size: 1.2em;
+}
+
+/*====================TAMAÑO DE LETRAS EN DIVS================*/
+.div2>p {
+    font-size: 1.3em;
+}
+
+#masgrande > p{
+    font-size: 1.65em;
+    margin-top: .1%;
+}
+
+.div3>p {
+    font-size: 1.5em;
+}
+
+.div10>p {
+    font-size: 1.5em;
+}
+
+.div40>p {
+    font-size: 1.5em;
+}
+
+.div1>p {
+    font-size: 1.3em;
+}
+
+.div80 > p{
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+/*===============BUTTONS================*/
+
+button {
+    height: 40px;
+    width: 60%;
+    border: 2px solid #ffe748;
+    border-radius: 15px;
+    font-size: 1em;
+    color: white;
+    outline: none;
+    background-color: #fddd0a;
+}
+
+
+/*===============INPUTS=================*/
+
+input[type="text"],
+input[type="password"] {
+    float: left;
+    height: 35px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 200;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 1);
+    padding: 5px;
+    outline: none;
+    transition: .5s all;
+    color: rgba(0, 0, 0, 1);
+}
+
+input[type="date"] {
+    float: left;
+    height: 32px;
+    width: 100%;
+    font-size: 13px;
+    font-weight: 200;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background: rgba(255, 255, 255, 1);
+    padding: 5px;
+    outline: none;
+    transition: .5s all;
+    color: rgba(0, 0, 0, 1);
+}
+
+select {
+    background: rgba(205, 205, 205, .1);
+    float: left;
+    height: 33px;
+    width: 100%;
+    font-size: 15px;
+    font-weight: 200;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    outline: none;
+    transition: .5s all;
+    color: rgba(0, 0, 0, 1);
+}
+
+select,
+option {
+    color: black;
+}
+
+/*no mostrar objeto*/
+.nv {
+    left: 360px;
+    visibility: hidden !important;
+    transition: all .5s;
+}
+
+.ver {
+   left: 0px;
+   visibility: visible !important;
+   transition: all .5s;
+}
+
+.no{
+    display: none;
+}
+.vis{
+    display: block;
+}
+
+
+/*mostrar*/
+
+.riz {
+    left: 0px;
+    visibility: visible !important;
+    transition: all 2s;
+    display: block;
+}
+
+
+/*Movimiento del registro*/
+
+.rde {
+    left: 360px;
+    visibility: hidden !important;
+    transition: all 2S;
+    display: none;
+}
+
+
+/*Movimiento del registro*/
+
+
+/*=============FOOTER===================*/
+
+.footer {
+    background: rgba(123, 123, 123, .3);
+    width: 100%;
+    height: 10%;
+    top: 92%;
+    position: fixed;
+    float: left;
+    border-top: 1px solid rgba(4, 148, 68, .4);
+}
+
+.icon-foot {
+    /* background-color: black; */
+    width: 65%;
+    height: 100%;
+    position: relative;
+    top: 33%;
+}
+
+.icon-foot>img {
+    width: 50%;
+    /*se cambio*/
+    max-width: 65%;
+    height: 40%;
+    margin-top: 10%;
+    margin-left: 20%;
+    /* se agrego*/
+}
+
+.footeru {
+    background: blue;
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 90%;
+    float: left;
+}
+
+.foot {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    float: left;
+}
+
+
+/*=============HEADER===================*/
+
+/* .headeresta {
+    width: 99.9%;
+    height: 9%;
+    position: fixed;
+    float: left;
+    background: transparent;
+} */
+
+.header {
+    width: 99.9%;
+    height: 9%;
+    position: absolute;
+    float: left;
+    border-bottom: 2px solid #ccc;
+    background: rgba(255,38,0,1);
+}
+
+#logo {
+    width: 72%;
+    height: 70%;
+    position: relative;
+    margin-top: 4%;
+    margin-left: 10%;
+    float: left;
+}
+
+#base {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* margin-top: 4%; */
+    float: left;
+}
+
+#sesion {
+    width: 70%;
+    /*se cambio*/
+    max-width: 75%;
+    height: 80%;
+    margin-top: 40%;
+}
+
+#csesion {
+    width: 70% !important;
+    height: 70% !important;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    /* left: calc(75% - 10px); */
+}
+
+#atras {
+    width: 70% !important;
+    height: 70% !important;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+}
+
+#back {
+    width: 70%;
+    /*se cambio*/
+    max-width: 75%;
+    height: 70%;
+    margin-top: 50%;
+}
+
+
+/*============base=====================*/
+
+.pantalla-bg {
+    background-color: rgba(227,227,227,1);
+    /*background-image: url(../img/back1.png);*/
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    /*Le damos un position relative para que el contenido no se 
+    desmaquete cuando salga el teclado*/
+    position: relative;
+    /*Permitimos el scroll vertical para cuando salga el teclado.*/
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+/* ========== modal =============*/
+
+#bg-negro {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    background: rgba(0, 0, 0, .5);
+    z-index: 999999999;
+    transition: .1s all;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#modal {
+    float: left;
+    position: fixed;
+    background: #fff;
+    z-index: 999999999999;
+    border-radius: 2px;
+    top: 50%;
+    margin-top: -100px;
+    box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, .5);
+    transition: .2s all;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(.9);
+    width: 200px;
+    left: 50%;
+    overflow: hidden;
+}
+
+#modal>h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #34495e;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#modal>p {
+    color: #6f7a8c;
+    width: 80%;
+    float: left;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.chico {
+    width: 300px !important;
+    margin-left: -150px;
+}
+
+.verModal {
+    visibility: visible !important;
+    opacity: 1 !important;
+    -webkit-transform: scale(1) !important;
+}
+
+.grande {
+    width: 600px !important;
+    margin-left: -300px;
+}
+
+/*============menu==============*/
+#bg-negros {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: fixed;
+    /* background: rgba(0, 0, 0, .5); */
+    z-index: 999999999;
+    transition: .1s all;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.derecho {
+    width: 50% !important;
+    /* margin-left: -50%; */
+}
+
+#modals {
+    float: left;
+    position: fixed;
+    background: rgba(255,38,0,1);
+    z-index: 999999999999;
+    /* border-radius: 2px; */
+    top: 9%;
+    /* margin-top: -100px; */
+    transition: .2s all;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: scale(.9);
+    width: 200px;
+    height: 100%;
+    /* left: 50%; */
+    overflow: hidden;
+}
+
+/* #modals > h1 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    color: #34495e;
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+
+#modals>p {
+    color: #6f7a8c;
+    width: 80%;
+    float: left;
+    margin-left: 10%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+
+/* ===========index.php=========*/
+
+.pantalla-inicio {
+    /*  background-image: url('../img/fondo1.jpg');    
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center center; */
+    background: #ff2600;/*255,38,0*/
+    width: 100%;
+    height: 100%;
+    /*Le damos un position relative para que el contenido no se 
+    desmaquete cuando salga el teclado*/
+    position: relative;
+    /*Permitimos el scroll vertical para cuando salga el teclado.*/
+    overflow-y: scroll;
+}
+
+.bg-logo {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    float: left;
+}
+
+.img-logo {
+    /* background-color: blue; */
+    width: 75%;
+    height: 55%;
+    max-height: 45%;
+    position: relative;
+    top: 45%;
+    left: 22%;
+}
+
+#ilogo {
+    width: 75%;
+    height: 100%;
+    max-height: 160%;
+}
+
+.bg-formu {
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    float: left;
+    top: 50%;
+}
+
+#formulario {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    margin-left: 15%;
+    float: left;
+    margin-top: 1%;
+}
+
+#formreg {
+    width: 70%;
+    height: 70%;
+    position: absolute;
+    margin-left: 15%;
+    float: left;
+    margin-top: 1%;
+}
+.bg-dere{
+    /* background: black; */
+    width: 100%;
+    height: 10%;
+    position: fixed;
+    top: 90%;
+    float: left;
+}
+
+input#correo{
+    background-image: url(../img/icon/user.png);
+    background-repeat: no-repeat;
+    background-size: 13% 95%;
+    padding-left: 13%;
+}
+
+input#contra{
+    background-image: url(../img/icon/key.png);
+    background-repeat: no-repeat;
+    background-size: 13% 95%;
+    padding-left: 13%;
+}
+
+/* ============semaforo.html=======*/
+
+.banner2-bg {
+    /* background-color: red; */
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    /* top: .5%; */
+    float: left;
+    top: 12%;
+}
+
+.img-ban {
+    width: 99%;
+    height: 95%;
+    position: relative;
+    float: left;
+    margin-left: .5%;
+    margin-top: 2%;
+    border-radius: 10px;
+
+}
+
+.estado {    
+    width: 100%;
+    height: 25%;
+    top: 42%;
+    position: absolute;
+    float: left;    
+}
+
+.estado1{
+    width: 100%;
+    height: 55%;
+    position: relative;
+    float: left;
+    border-bottom: 2px solid rgba(64,78,103,.6);
+}
+.estado2{
+    width: 100%;
+    height: 45%;
+    position: relative;
+    float: left;
+}
+
+#estado{
+    height: 50px;
+    font-size: 1.6em;
+    background: #005845;
+    border:#005845;;
+}
+#cambio{
+    height: 50px;
+    font-size: 1.6em;
+}
+
+.boton-bg {
+    /* background-color: yellow; */
+    width: 100%;
+    height: 28%;
+    top: 72%;
+    position: absolute;
+    float: left;
+}
+
+.img-bg {
+    width: 65%;
+    height: 100%;
+    margin-left: 18%;
+    /* background-color: rgba(153,153,153,.3); */
+    position: relative;
+}
+
+.img-bg>img {
+    width: 67%;
+    height: 85%;
+    max-width: 70%;
+    max-height: 90%;
+    background: transparent;
+    margin-left: 16%;
+}
+
+
+/*============corte.html=============*/
+
+.liston {
+    background:rgba(250,242,11,.8);
+    width: 100%;
+    height: 7%;
+    position: absolute;
+    top: 13%;
+}
+
+.menu-bg {
+    /*background: red;*/
+    width: 100%;
+    height: 68%;
+    position: absolute;
+    top: 21%;
+}
+
+.divestacion {
+    /* background: blue; */
+    width: 100%;
+    height: 12%;
+    margin-top: 1%;
+    position: relative;
+    float: left;
+}
+
+#proxsta{
+    background: red;
+}
+
+#iconesta{
+    width: 99%;
+    height: 90%;
+    position: relative;
+    margin-top: 4%
+}
+
+.divrenglon {
+    /*background: blue;*/
+    width: 99%;
+    height: 5%;
+    margin-left: 1%;
+    margin-top: 2%;
+    position: relative;
+    float: left;
+}
+
+.img-icon {
+    width: 99%;
+    height: 85%;
+    margin-left: 0%;
+    margin-top: 2%;
+    position: relative;
+    float: left;
+    border-radius: 19px;
+}
+
+/*============estacion.html=============*/
+.imagensta{
+    width: 100%;
+    height: 41%;
+    position:absolute;
+    float: left;
+    top: 9%;
+}
+.datosta{
+    width: 100%;
+    height: 43%;
+    position: absolute;
+    float: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    top: 57%;
+}
+.menusta{
+    width: 80%;
+    height: 4%;
+    position: absolute;
+    /* background: rgba(245,247,250,1); */
+    float: left;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    top: 53%;
+    left: 9%;
+}
+
+.imgm{
+    width: 35%;
+    height: 90%;
+    position: relative;
+    margin-top: 2%;
+}
+.imgms{
+    width: 35%;
+    height: 80%;
+    position: relative;
+    margin-top: 7%;
+}
+
+.datosfin{
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: absolute;
+    overflow-y: scroll;
+    overflow-x: none;
+}
+
+#iconbuscar{
+    width: 95%;
+    height: 100%;
+}
+
+#btnfecha{
+    border: 2px solid transparent;
+    background: transparent;
+    margin-top: -10%;
+}
+
+#bote {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    float: left;
+}
+
+/*=============================inicio.html===================*/
+.seccion-bg {
+    /*background: red;*/
+    width: 100%;
+    height: 70%;
+    position: absolute;
+    top: 15%;
+}
+
+.divseccion {
+    /* background: blue; */
+    width: 80%;
+    height: 15%;
+    margin-top: 7%;
+    position: relative;
+    float: left;
+    margin-left: 10%;
+}
+
+#iconsecc{
+    width: 90%;
+    height: 80%;
+    position: relative;
+    margin-top: 4%
+}
+
+
+/*======================mapa.html=========================*/
+.mapa{
+    width: 100%;
+    height: 91%;
+    position: absolute;
+    float: left;
+    top: 9%;
+    /*background: red;*/
+}
+/*
+.buscador{
+    position: absolute;
+    top: 45px;
+    z-index: 99;
+    width:74.25%;
+    background-color: transparent;
+}
+
+
+.botonbuscador{
+    position: absolute;
+    top: 45px;
+    z-index: 99;
+    width: 85px;
+    //background-color: red !important;
+    left: 74.25%;
+}
+
+.buscador input{
+    width: 100%;
+}
+
+.botonbuscador img{
+    height: 30px;
+    width: 30px;
+    margin-left: 28px;
+}*/
