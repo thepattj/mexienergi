@@ -5,7 +5,7 @@
     Negros      #000000 / 9,71,37 
     azules      #2E7BA5 #6BC9C3 / 30,114,154
     rojos       #AF0800 / 220,44,51 - #F60908 / shell208,48,6
-    amarillos   #FAF20B / shell244,148,38
+    amarillos   #FAF20B / shell 244,148,38
     verdes      #237D45 /
     
 */
@@ -230,7 +230,8 @@ input[type="password"] {
     background: rgba(255, 255, 255, 1);
     padding: 5px;
     outline: none;
-    transition: .5s all;
+    transition-timing-function: linear;
+    /*-webkit-transition: .5s all;*/
     color: rgba(0, 0, 0, 1);
 }
 
@@ -246,7 +247,8 @@ input[type="date"] {
     background: rgba(255, 255, 255, 1);
     padding: 5px;
     outline: none;
-    transition: .5s all;
+    transition-timing-function: linear;
+    /*-webkit-transition: .5s all;*/
     color: rgba(0, 0, 0, 1);
 }
 
@@ -262,7 +264,8 @@ select {
     border: none;
     padding: 5px;
     outline: none;
-    transition: .5s all;
+    transition-timing-function: linear;
+    /*-webkit-transition: .5s all;*/
     color: rgba(0, 0, 0, 1);
 }
 
@@ -275,13 +278,15 @@ option {
 .nv {
     left: 360px;
     visibility: hidden !important;
-    transition: all .5s;
+    transition-timing-function: linear;
+    /*-webkit-transition: all .5s;*/
 }
 
 .ver {
-   left: 0px;
-   visibility: visible !important;
-   transition: all .5s;
+    left: 0px;
+    visibility: visible !important;
+    transition-timing-function: linear;
+    /*-webkit-transition: all .5s;*/
 }
 
 .no{
@@ -297,7 +302,8 @@ option {
 .riz {
     left: 0px;
     visibility: visible !important;
-    transition: all 2s;
+    transition-timing-function: linear;
+    /*-webkit-transition: all 2s;*/
     display: block;
 }
 
@@ -307,7 +313,8 @@ option {
 .rde {
     left: 360px;
     visibility: hidden !important;
-    transition: all 2S;
+    transition-timing-function: linear;
+    /*-webkit-transition: all 2S;*/
     display: none;
 }
 
@@ -465,7 +472,8 @@ option {
     position: fixed;
     background: rgba(0, 0, 0, .5);
     z-index: 999999999;
-    transition: .1s all;
+    transition-timing-function: linear;
+    /*-webkit-transition: .1s all;*/
     opacity: 0;
     visibility: hidden;
 }
@@ -479,10 +487,12 @@ option {
     top: 50%;
     margin-top: -100px;
     box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, .5);
-    transition: .2s all;
+    transition-timing-function: linear;
+    /*-webkit-transition: .2s all;*/
     opacity: 0;
     visibility: hidden;
-    -webkit-transform: scale(.9);
+    /*transition-timing-function: linear;
+    -webkit-transform: scale(.9);*/
     width: 200px;
     left: 50%;
     overflow: hidden;
@@ -531,7 +541,7 @@ option {
     position: fixed;
     /* background: rgba(0, 0, 0, .5); */
     z-index: 999999999;
-    transition: .1s all;
+    -webkit-transition: .1s all;
     opacity: 0;
     visibility: hidden;
 }
@@ -549,7 +559,7 @@ option {
     /* border-radius: 2px; */
     top: 9%;
     /* margin-top: -100px; */
-    transition: .2s all;
+    -webkit-transition: .2s all;
     opacity: 0;
     visibility: hidden;
     -webkit-transform: scale(.9);
@@ -902,6 +912,24 @@ input#contra{
     height: 80%;
     position: relative;
     margin-top: 4%
+}
+
+/*======================CONSOLIDADO-INICIO.HMTL===========*/
+.divusuario{
+    width: 100%;
+    height: 40%;
+    position: relative;
+    float: left;
+    margin-top: 16%;
+    /*background: blue;*/
+}
+
+.datoscon{
+    width: 100%;
+    height: 50%;
+    float: left;
+    position: relative;
+    /*background: green;*/
 }
 
 
