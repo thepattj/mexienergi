@@ -612,8 +612,11 @@ function mostrarcorte() {
             k = 2; //direccion de imagen
             l=0;
             for (i = 0; i <= numero; i++) {
-                if (separar[m] == 1 || separar[m] == 2 || separar[m] == 3 || separar[m] == 4 || separar[m] == 5 || separar[m] == 6 ){
+                if (separar[m] == 1 || separar[m] == 2 || separar[m] == 4 || separar[m] == 6 ){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
+                }
+                if(separar[m] == 3 || separar[m] == 5){
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
                 if (separar[m] == 7 || separar[m] == 9 || separar[m] == 10 ){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
@@ -972,18 +975,11 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
 }
     
 function pagina(pagina) { // cambia de paginas
-    if(pagina == "semaforo.html"){
-        sessionStorage.setItem("truco", 1);
+    if(pagina == "inicio.html"){
+        window.location.assign(pagina);
+        alert("corte");
+        valida2();            
+    }else{
         window.location.assign(pagina);        
-    }
-    if(pagina == "corte.html"){
-        window.location.assign(pagina);
-        sessionStorage.setItem("truco", 1);
-    }if(pagina == "cortes.html"){
-        pagina = "corte.html";
-        window.location.assign(pagina);
-    }else if((pagina != "semaforo.html" ) && (pagina != "corte.html")){
-        window.location.assign(pagina);
-        sessionStorage.setItem("truco", 0);
     }    
 }
