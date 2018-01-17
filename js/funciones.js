@@ -977,8 +977,8 @@ function salir() { // Finaliza la sesión ademas de que borra los datos
 function pagina(pagina) { // cambia de paginas
     if(pagina == "inicio.html"){
         window.location.assign(pagina);
-        alert("corte");
-        valida2();            
+       /* alert("corte");
+        valida2();*/            
     }else{
         window.location.assign(pagina);        
     }    

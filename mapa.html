@@ -19,7 +19,30 @@
             </div>
             <div class="div6"></div>
         </div>
-         <div id="map" class="mapa"></div>
+        <div id="map" class="mapa"></div>
+        <div class="infomap"><div class="div1"></div>
+            <div id="info1" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/campa.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>ARCANGEL</strong> <br> <br> Av. Campanario #42 <br> Fracc. Hacienda Campanario</p></div>
+            </div>
+            <div id="info2" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"><strong>TLACOTE</strong> <br> Carretera a Tlacote 602 <br> Col. Ex Hacienda San Juanico</p></div>
+            </div>
+            <div id="info3" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>MACIAS</strong> <br> Av. Juarez 89 Ote. San Juan del Rio, Querétaro<br> Col. Centro</p></div>
+            </div>
+            <div id="info4" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/servif.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>SERVIFIGUES</strong> <br> Constituyentes 1557 <br> Col. Huertas del Carmen, Corregidora, Querétaro</p></div>
+            </div>
+            <div id="info5" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/aero.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>AEROPUERTO</strong> <br> <br> Carr. Estatal 100 QRO <br> Higerillas KM 7+450</p></div>
+            </div>
+            <div id="info6" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/northm.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>NORTHM</strong> <br> AUTOPISTA MÉXICO - QRO KM 175+60 <br> Pedro Escobedo, El Sauz Bajo</p></div>
+            </div>
+            <div id="info7" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/epig.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>EPIGMENIO</strong> <br> Av. Epigmenio Gonzalez 1220 <br> Fracc. Industrial Montaña</p></div>
+            </div>
+        </div>
 </body>
 
 </html>
@@ -39,13 +62,19 @@
 
   function initMap() { //FUNCION QUE CARGA EL MAPA CON LA GEOLOCALIZACION ACTUAL
     var marcadores = [
-        ['ARCANGEL <br> Av. Campanario #42 <br> Fracc. Hacienda Campanario', 20.6090593,-100.3766555],
-        ['TLACOTE <br> Carretera a Tlacote 602 <br> Col. Ex Hacienda San Juanico', 20.5891939,-100.4243764],
-        ['LA CURVA <br> Av. Juarez 89 Ote. <br> Col. Centro', 20.3857527,-99.9926849],
-        ['SERVIFIGUES <br> Constituyentes 1557 <br> Col. Huertas del Carmen, Corregidora, Querétaro', 20.538153,-100.4339062],
-        ['AEROPUERTO <br> Carr. Estatal 100 QRO <br> Higerillas KM 7+450', 20.6091354,-100.162595],
-        ['NORTHM <br> AUTOPISTA MÉXICO - QRO KM 175+60 <br> Pedro Escobedo, El Sauz Bajo', 20.461568,-100.0979912],
-        ['EPIGMENIO <br> Av. Epigmenio Gonzalez 1220 <br> Fracc. Industrial Montaña', 20.6055384,-100.4089717]
+        ['', 20.6090593,-100.3766555],
+
+        ['', 20.5891939,-100.4243764],
+
+        ['', 20.3857527,-99.9926849],
+
+        ['', 20.538153,-100.4339062],
+
+        ['', 20.6091354,-100.162595],
+
+        ['', 20.461568,-100.0979912],
+
+        ['', 20.6055384,-100.4089717]
     ];  
     
     var myLatlng = new google.maps.LatLng(20.5588118,-100.2264654);
@@ -71,12 +100,89 @@
             icon: 'img/icon/markg.png',
             map: map
         });
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-                infowindow.setContent(marcadores[i][0]);
-                infowindow.open(map, marker);
+
+    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function(){
+              
+              if(i == 0){
+                /*window.alert("estas en campanario");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "block";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 1){
+                /*window.alert("estas en tlacote");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "block";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 2){
+                /*window.alert("estas en macias");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "block";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 3){
+                /*window.alert("estas en servi");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "block";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 4){
+                /*window.alert("estas en aero");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "block";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 5){
+                /*window.alert("estas en north");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "block";
+                document.getElementById("info7").style.display = "none";
+              }if(i == 6){
+                /*window.alert("estas en epgimenio");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "block";
+              }
+                /*infowindow.setContent(marcadores[i][0]);
+                infowindow.open(map, marker);*/
+                /*document.querySelector(".infomap").innerHTML += marcadores[i][0];
+                document.querySelector(".infomap").style.display = "block";
+                */
+                /*window.alert(marcadores[i][0]);*/
             }
-        })(marker, i));
+          })(marker, i));
     }
   }
 </script>
