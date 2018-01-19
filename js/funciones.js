@@ -671,8 +671,8 @@ function muestrae() {
         estacionns = 1;
         //alert("SE FELIZ YA FUNCIONA");
         enviar = new XMLHttpRequest;
-        enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        //enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacionns + '&flag=' + flag);
         enviar.onreadystatechange = function () {
@@ -757,8 +757,8 @@ function pormes() { //ventas hasta el dia actual del mes
     if(estacione == 7){
         estacionns = 1;
         enviar = new XMLHttpRequest;
-        enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        //enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacionns + '&flag=' + flag);
         enviar.onreadystatechange = function () {
@@ -824,8 +824,8 @@ function promdmes() { //promedios del mes
     if(estacione == 7){
         estacionns = 1;
         enviar = new XMLHttpRequest;
-        enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        //enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacionns + '&flag=' + flag);
         enviar.onreadystatechange = function () {
@@ -895,8 +895,8 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
     if(estacione == 7){
         estacionns = 1;
         enviar = new XMLHttpRequest;
-        enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        //enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacionns + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
         enviar.onreadystatechange = function () {
