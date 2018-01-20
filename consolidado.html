@@ -10,29 +10,32 @@
       type="text/javascript"></script> -->
 </head>
 
-<body onload="vald()">
-    <div id="bg-negro" onclick="cerrar()"></div>
+<body onload="consolidado()">
+     <div id="bg-negro" onclick="cerrar()"></div>
     <div id="modal"></div>
     <div class="pantalla-bg">
         <div class="header">
-            <div class="div6"></div>
+            <div class="div6">
+                <img src="img/icon/atras.png" style="width: 60%; height: 60%; margin-top: 22%;" onclick="pagina('inicio.html')">
+            </div>
             <div class="div60">
                 <img src="img/logo4.png" id="logo">
             </div>
             <div class="div6"></div>
         </div>
-        <div class="divusuario">
+        
+        <div class="divusuario" id="iuser">
             <img src="img/icon/userx.png" style="display: block; position: relative; opacity: .7; width: 50%; height: 70%; margin-left: 25%; margin-top: 11%;" id="">
         </div>
-        <div class="div1"><p style="font-size: 1.2em; color: #ff2600;">Consolidado</p></div>
-        <div class="datoscon">
+        <div class="div1" id="ititulo"><p style="font-size: 1.2em; color: #ff2600; display: flex; justify-content: center;">Consolidado</p></div>
+        <div class="datoscon" id="iconso">
             <div class="divtabla">
-                <div class="div1" id="esta">Estacion</div>
-                <div class="div3" style="display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: white;">Fecha</p></div><div class="div3" style="display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: white;">Lts</p></div><div class="div3" style="display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-bottom: 4px !important;"><p style=" color: white; font-size: 1.4em;">$</p></div>
                 
-                <div class="div3" style="display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: black;" id="fechacon">Fecha</p></div><div class="div3" style="display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: black;" id="litroscon">Lts</p></div><div class="div3" style="display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-bottom: 4px !important;"><p style=" color: black; font-size: 1.4em;" id="pesoscon">$</p></div>
             </div>
+            <div class="div1"></div><div class="div1"></div>
+            <div class="div1"></div><div class="div1"></div><div class="div1"></div><div class="div1"></div>
         </div>
+        
     </div>
 </body>
 </html>

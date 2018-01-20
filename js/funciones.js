@@ -240,29 +240,15 @@ function vald(){
         document.getElementById("est").classList.add("no");
         document.getElementById("su").classList.add("no");
     }if(e == 1 && s == 0){
-        document.getElementById("iuser").classList.add("vis")
-        document.getElementById("ititulo").classList.add("vis")
-        document.getElementById("iconso").classList.add("vis")
-        document.getElementById("iuser").classList.remove("no")
-        document.getElementById("ititulo").classList.remove("no")
-        document.getElementById("iconso").classList.remove("no")
-        consolidado();
-        /*document.getElementById("est").classList.add("vis");
+        document.getElementById("est").classList.add("vis");
         document.getElementById("est").classList.remove("no");
         document.getElementById("sem").classList.add("no");
-        document.getElementById("su").classList.add("no");*/
+        document.getElementById("su").classList.add("no");
     }if(e == 1 && s ==1){
-        document.getElementById("iuser").classList.add("vis")
-        document.getElementById("ititulo").classList.add("vis")
-        document.getElementById("iconso").classList.add("vis")
-        document.getElementById("iuser").classList.remove("no")
-        document.getElementById("ititulo").classList.remove("no")
-        document.getElementById("iconso").classList.remove("no")
-        consolidado();
-        /*document.getElementById("su").classList.add("vis");
+        document.getElementById("su").classList.add("vis");
         document.getElementById("su").classList.remove("no");
         document.getElementById("sem").classList.add("no");
-        document.getElementById("est").classList.add("no");*/
+        document.getElementById("est").classList.add("no");
     }
 }
 
