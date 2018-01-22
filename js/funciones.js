@@ -877,9 +877,9 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
     ffin = sessionStorage.getItem("fecha");
     ffalsa = sessionStorage.getItem("fecha");
     flag = "fechaFin";
-
     if(estacione == 7){
         estacionns = 1;
+        //alert(estacione+"fechainicio"+finicio+"fecha fin"+ffin);
         enviar = new XMLHttpRequest;
         //enviar.open('POST', '../../datosprueba/datoslocalns.php');
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
@@ -1032,50 +1032,104 @@ function enviarF(form) { //rango de fecha se acciona con el boton
     finicio = finicio.split('-').reverse().join('/');
     ffin = ffin.split('-').reverse().join('/');
 
-    if (finicio != "") {
-        if (ffin != "") {
-            /*alert(finicio);alert(ffin);*/
-            valorinicio = finicio.split("/");
-            valorfin = ffin.split("/");
-            diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
-            diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
-            if(diafin >= diainicio){
-                enviar = new XMLHttpRequest;
-                /*enviar.open('POST', 'datos.php');*/
-                enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
-                enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
-                enviar.onreadystatechange = function () {
-                    if (enviar.readyState == 4 && enviar.status == 200) {
-                        respuesta = enviar.responseText;
-                        /*alert(respuesta);*/
-                        rango = respuesta.split("*");
-                        document.getElementById("totalv4").innerHTML = "$" + rango[3];
-                        document.getElementById("totalts4").innerHTML = rango[7] + " lts";
-                        /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
-                        document.getElementById("preciom4").innerHTML = "$" + rango[11];
-                        document.getElementById("preciop4").innerHTML = "$" + rango[12];
-                        document.getElementById("preciod4").innerHTML = "$" + rango[13];
-                        document.getElementById("vendidom4").innerHTML = rango[4]+"lts";
-                        document.getElementById("vendidop4").innerHTML = rango[5]+"lts";
-                        document.getElementById("vendidod4").innerHTML = rango[6]+"lts";
-                        document.getElementById("vtm4").innerHTML = "$" + rango[0];
-                        document.getElementById("vtp4").innerHTML = "$" + rango[1];
-                        document.getElementById("vtd4").innerHTML = "$" + rango[2];
-                        document.getElementById("pm4").innerHTML = rango[8]+"%";
-                        document.getElementById("pp4").innerHTML = rango[9]+"%";
-                        document.getElementById("pd4").innerHTML = rango[10]+"%";
+    if(estacione == 7){
+        if (finicio != "") {
+            if (ffin != "") {
+                estacione = 1;
+                //alert(finicio);alert(ffin);
+                alert(estacione);
+                valorinicio = finicio.split("/");
+                valorfin = ffin.split("/");
+                diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
+                diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
+                //alert(diainicio);alert(diafin);
+                if(diafin >= diainicio){
+                    enviar = new XMLHttpRequest;
+                    /*enviar.open('POST', 'datos.php');*/
+                    //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+                    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+                    enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    alert(estacione+"inicio"+finicio+"fin"+ffin);
+                    enviar.onreadystatechange = function () {
+                        if (enviar.readyState == 4 && enviar.status == 200) {
+                            respuesta = enviar.responseText;
+                            /*alert(respuesta);*/
+                            rango = respuesta.split("*");
+                            document.getElementById("totalv4").innerHTML = "$" + rango[3];
+                            document.getElementById("totalts4").innerHTML = rango[7] + " lts";
+                            /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
+                            document.getElementById("preciom4").innerHTML = "$" + rango[11];
+                            document.getElementById("preciop4").innerHTML = "$" + rango[12];
+                            document.getElementById("preciod4").innerHTML = "$" + rango[13];
+                            document.getElementById("vendidom4").innerHTML = rango[4]+"lts";
+                            document.getElementById("vendidop4").innerHTML = rango[5]+"lts";
+                            document.getElementById("vendidod4").innerHTML = rango[6]+"lts";
+                            document.getElementById("vtm4").innerHTML = "$" + rango[0];
+                            document.getElementById("vtp4").innerHTML = "$" + rango[1];
+                            document.getElementById("vtd4").innerHTML = "$" + rango[2];
+                            document.getElementById("pm4").innerHTML = rango[8]+"%";
+                            document.getElementById("pp4").innerHTML = rango[9]+"%";
+                            document.getElementById("pd4").innerHTML = rango[10]+"%";
 
+                        }
                     }
+                }else{
+                    verModal('grande', '', 'Ok', 'Verifica las fechas, rango incorrecto.');
                 }
-            }else{
-                verModal('grande', '', 'Ok', 'Verifica las fechas, rango incorrecto.');
+            } else {
+                verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
             }
         } else {
             verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
         }
-    } else {
-        verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+    }else{
+        if (finicio != "") {
+            if (ffin != "") {
+                alert(finicio);alert(ffin);
+                valorinicio = finicio.split("/");
+                valorfin = ffin.split("/");
+                diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
+                diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
+                //alert(diainicio);alert(diafin);
+                if(diafin >= diainicio){
+                    enviar = new XMLHttpRequest;
+                    /*enviar.open('POST', 'datos.php');*/
+                    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
+                    enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.onreadystatechange = function () {
+                        if (enviar.readyState == 4 && enviar.status == 200) {
+                            respuesta = enviar.responseText;
+                            /*alert(respuesta);*/
+                            rango = respuesta.split("*");
+                            document.getElementById("totalv4").innerHTML = "$" + rango[3];
+                            document.getElementById("totalts4").innerHTML = rango[7] + " lts";
+                            /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
+                            document.getElementById("preciom4").innerHTML = "$" + rango[11];
+                            document.getElementById("preciop4").innerHTML = "$" + rango[12];
+                            document.getElementById("preciod4").innerHTML = "$" + rango[13];
+                            document.getElementById("vendidom4").innerHTML = rango[4]+"lts";
+                            document.getElementById("vendidop4").innerHTML = rango[5]+"lts";
+                            document.getElementById("vendidod4").innerHTML = rango[6]+"lts";
+                            document.getElementById("vtm4").innerHTML = "$" + rango[0];
+                            document.getElementById("vtp4").innerHTML = "$" + rango[1];
+                            document.getElementById("vtd4").innerHTML = "$" + rango[2];
+                            document.getElementById("pm4").innerHTML = rango[8]+"%";
+                            document.getElementById("pp4").innerHTML = rango[9]+"%";
+                            document.getElementById("pd4").innerHTML = rango[10]+"%";
+
+                        }
+                    }
+                }else{
+                    verModal('grande', '', 'Ok', 'Verifica las fechas, rango incorrecto.');
+                }
+            } else {
+                verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+            }
+        } else {
+            verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+        }
     }
 }
 
