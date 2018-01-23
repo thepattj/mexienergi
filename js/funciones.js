@@ -294,6 +294,7 @@ function consolidado(){
             /*alert(respuesta);*/
             /*sessionStorage.setItem("semsta", respuesta);*/
             sepa = respuesta.split("*");
+            alert(sepa)
             numero = (sepa.length);
             j=1;
             k=2;
@@ -309,6 +310,40 @@ function consolidado(){
             }
         }            
     }
+    consolidado2();
+}
+
+function consolidado2(){
+    estaci = sessionStorage.getItem("esc");
+    flag = "consolida";
+    mandar = new XMLHttpRequest;
+    //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+    mandar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+    mandar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    mandar.send('est=' + estaci + '&flag=' + flag);
+    mandar.onreadystatechange = function () {
+        if (mandar.readyState == 4 && mandar.status == 200) {
+            respuesta = mandar.responseText;
+            alert(respuesta);
+            /*sessionStorage.setItem("semsta", respuesta);*/
+            sepa = respuesta.split("*");
+            //alert(sepa)
+            numero = (sepa.length);
+            j=1;
+            k=2;
+            l=3;
+            m=4
+            for(i=0; i<=numero; i+=6){
+                document.querySelector(".divtabla2").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                
+                j = j+5;
+                k=k+5;
+                l=l+5;
+                m=m+5;
+            }
+        }            
+    }
+
 }
 
 function progres(){
@@ -585,17 +620,19 @@ function mostrarcorte() {
         if (enviar.readyState == 4 && enviar.status == 200) {
             respuesta = enviar.responseText;
             sessionStorage.setItem("sta", respuesta);
+            //alert(respuesta); la trama de la respuesta
             separar = respuesta.split("*");
-            numero = (separar.length) - 1;
+            numero = (separar.length);
+            //alert(numero); total de datos
             m = 0; //posicion de los id
             j = 1; //poscion de nombre
             k = 2; //direccion de imagen
             l=0;
             for (i = 0; i <= numero; i++) {
-                if (separar[m] == 1 || separar[m] == 2 || separar[m] == 4 || separar[m] == 6 || separar[m] == 9 || separar[m] == 10 || separar[m] == 8){
+                if (separar[m] == 1 || separar[m] == 2 || separar[m] == 4 || separar[m] == 6 ){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
-                if(separar[m] == 3 || separar[m] == 5 || separar[m] == 7){
+                if(separar[m] == 3 || separar[m] == 5 || separar[m] == 7 || separar[m] == 9 || separar[m] == 10 || separar[m] == 11 || separar[m] == 8){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
 
@@ -603,7 +640,7 @@ function mostrarcorte() {
                 m = m + 3;
                 k = k + 3;
                 l++;
-                if(separar[m] > 10){ break;}
+                //if(separar[m] > 10){ break;} 
             }
             //COMO VALIDAR LOS DATOS DE LA RESPUESTA...
         }
