@@ -300,7 +300,7 @@ function consolidado(){
             l=3;
             m=4
             for(i=0; i<=numero; i+=6){
-                document.querySelector(".divtabla").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(69,69,69,.5); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: rgba(69,69,69,.2); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                document.querySelector(".divtabla").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
                 
                 j = j+5;
                 k=k+5;
@@ -1037,7 +1037,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
             if (ffin != "") {
                 estacione = 1;
                 //alert(finicio);alert(ffin);
-                alert(estacione);
+                //alert(estacione);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
                 diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
@@ -1050,7 +1050,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
                     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
-                    alert(estacione+"inicio"+finicio+"fin"+ffin);
+                    //alert(estacione+"inicio"+finicio+"fin"+ffin);
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200) {
                             respuesta = enviar.responseText;
