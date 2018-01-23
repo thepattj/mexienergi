@@ -294,7 +294,7 @@ function consolidado(){
             /*alert(respuesta);*/
             /*sessionStorage.setItem("semsta", respuesta);*/
             sepa = respuesta.split("*");
-            alert(sepa)
+            //alert(sepa)
             numero = (sepa.length);
             j=1;
             k=2;
@@ -324,7 +324,7 @@ function consolidado2(){
     mandar.onreadystatechange = function () {
         if (mandar.readyState == 4 && mandar.status == 200) {
             respuesta = mandar.responseText;
-            alert(respuesta);
+            //alert(respuesta);
             /*sessionStorage.setItem("semsta", respuesta);*/
             sepa = respuesta.split("*");
             //alert(sepa)
@@ -632,8 +632,11 @@ function mostrarcorte() {
                 if (separar[m] == 1 || separar[m] == 2 || separar[m] == 4 || separar[m] == 6 ){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
-                if(separar[m] == 3 || separar[m] == 5 || separar[m] == 7 || separar[m] == 9 || separar[m] == 10 || separar[m] == 11 || separar[m] == 8){
+                if(separar[m] == 3 || separar[m] == 5 || separar[m] == 7){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
+                }
+                if(separar[m] == 9 || separar[m] == 10 || separar[m] == 11 || separar[m] == 8){
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";   
                 }
 
                 j = j + 3;
@@ -706,7 +709,7 @@ function muestrae() {
                 fecha = datos[2];
                 sessionStorage.setItem("fecha", fecha);
                 document.getElementById("nombre").innerHTML = datos[0];
-                if(datos[0] == "Servifigues"){
+                if(datos[0] == "SERVIFIGUES"){
                     image = document.getElementById("bannersta");
                     image.src = dirimg[6];
                 }
