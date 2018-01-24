@@ -291,22 +291,27 @@ function consolidado(){
     enviar.onreadystatechange = function () {
         if (enviar.readyState == 4 && enviar.status == 200) {
             respuesta = enviar.responseText;
-            /*alert(respuesta);*/
-            /*sessionStorage.setItem("semsta", respuesta);*/
-            sepa = respuesta.split("*");
-            //alert(sepa)
-            numero = (sepa.length);
-            j=1;
-            k=2;
-            l=3;
-            m=4
-            for(i=0; i<=numero; i+=6){
-                document.querySelector(".divtabla").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
-                
-                j = j+5;
-                k=k+5;
-                l=l+5;
-                m=m+5;
+            //alert(respuesta);
+            if(respuesta==""){
+
+            }else{
+                /*sessionStorage.setItem("semsta", respuesta);*/
+                sepa = respuesta.split("*");
+                //alert(sepa)
+                numero = (sepa.length);
+                //alert(numero);    
+                j=1;
+                k=2;
+                l=3;
+                m=4
+                for(i=0; i<numero; i+=6){
+
+                    document.querySelector(".divtabla").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    j=j+5;
+                    k=k+5;
+                    l=l+5;
+                    m=m+5;
+                }
             }
         }            
     }
@@ -325,21 +330,25 @@ function consolidado2(){
         if (mandar.readyState == 4 && mandar.status == 200) {
             respuesta = mandar.responseText;
             //alert(respuesta);
-            /*sessionStorage.setItem("semsta", respuesta);*/
-            sepa = respuesta.split("*");
-            //alert(sepa)
-            numero = (sepa.length);
-            j=1;
-            k=2;
-            l=3;
-            m=4
-            for(i=0; i<=numero; i+=6){
-                document.querySelector(".divtabla2").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
-                
-                j = j+5;
-                k=k+5;
-                l=l+5;
-                m=m+5;
+            if(respuesta == ""){
+            }
+            else{
+                /*sessionStorage.setItem("semsta", respuesta);*/
+                sepa = respuesta.split("*");
+                //alert(sepa)
+                numero = (sepa.length);
+                j=1;
+                k=2;
+                l=3;
+                m=4
+                for(Z=0; Z<numero; Z+=6){
+                    document.querySelector(".divtabla2").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    
+                    j = j+5;
+                    k=k+5;
+                    l=l+5;
+                    m=m+5;
+                }
             }
         }            
     }
@@ -857,16 +866,16 @@ function promdmes() { //promedios del mes
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
                 respuesta = enviar.responseText;
-                /*alert(respuesta);*/
+                //alert(respuesta);
                 fecha = sessionStorage.getItem("fecha");
                 fechas = fecha.split("/");
                 rango = respuesta.split("*");
                 document.getElementById("totalv3").innerHTML = "$" + rango[3];
                 document.getElementById("totalts3").innerHTML = rango[7] + " lts";
                 document.getElementById("fecha3").innerHTML = "Promedio de "+meses[parseInt(fechas[1])]+" "+fechas[2];
-                document.getElementById("preciom3").innerHTML = "$" + datos[3];
-                document.getElementById("preciop3").innerHTML = "$" + datos[4];
-                document.getElementById("preciod3").innerHTML = "$" + datos[5];
+                document.getElementById("preciom3").innerHTML = "$" + rango[11];
+                document.getElementById("preciop3").innerHTML = "$" + rango[12];
+                document.getElementById("preciod3").innerHTML = "$" + rango[13];
                 document.getElementById("litrosm3").innerHTML = rango[4]+"lts";
                 document.getElementById("litrosp3").innerHTML = rango[5]+"lts";
                 document.getElementById("litrosd3").innerHTML = rango[6]+"lts";
@@ -887,16 +896,16 @@ function promdmes() { //promedios del mes
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
                 respuesta = enviar.responseText;
-                /*alert(respuesta);*/
+                //alert(respuesta);
                 fecha = sessionStorage.getItem("fecha");
                 fechas = fecha.split("/");
                 rango = respuesta.split("*");
                 document.getElementById("totalv3").innerHTML = "$" + rango[3];
                 document.getElementById("totalts3").innerHTML = rango[7] + " lts";
                 document.getElementById("fecha3").innerHTML = "Promedio de "+meses[parseInt(fechas[1])]+" "+fechas[2];
-                document.getElementById("preciom3").innerHTML = "$" + datos[3];
-                document.getElementById("preciop3").innerHTML = "$" + datos[4];
-                document.getElementById("preciod3").innerHTML = "$" + datos[5];
+                document.getElementById("preciom3").innerHTML = "$" + rango[11];
+                document.getElementById("preciop3").innerHTML = "$" + rango[12];
+                document.getElementById("preciod3").innerHTML = "$" + rango[13];
                 document.getElementById("litrosm3").innerHTML = rango[4]+"lts";
                 document.getElementById("litrosp3").innerHTML = rango[5]+"lts";
                 document.getElementById("litrosd3").innerHTML = rango[6]+"lts";
@@ -1126,7 +1135,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
     }else{
         if (finicio != "") {
             if (ffin != "") {
-                alert(finicio);alert(ffin);
+                //alert(finicio);alert(ffin);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
                 diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
