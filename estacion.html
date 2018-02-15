@@ -8,6 +8,8 @@
 </head>
 
 <body onload="muestrae()">
+    <div id="bg-negro" onclick="cerrar()"></div>
+    <div id="modal"></div>
     <div id="bg-negros" onclick="cerrarms()"></div>
     <div class="pantalla-bg">
 
@@ -78,45 +80,30 @@
                 
             </div>
 
-            <div class="datosfin nv" id="promedio">
-                <div class="div1"></div>
-                <div class="div1"><p style="font-size: 1.2em; color: #ff2600;" id="fecha3"></p></div>
-                
-                 <div class="div3" style="display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: black;">Super</p></div><div class="div3" style="display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: white;">V-Power</p></div><div class="div3" style="display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;"><p style=" color: white; font-size: 1.4em;">Diesel</p></div>
-                
-                <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="preciom3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciop3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciod3" style="font-size: 1.1em;"></p></div>
-                
-                <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="litrosm3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="litrosp3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="litrosd3" style="font-size: 1.1em;"></p></div>
-                
-                <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="vendidom3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidop3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidod3" style="font-size: 1.1em;"></p></div>
-                
-                <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="pm3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pp3" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pd3" style="font-size: 1.1em;"></p></div>
-                
-                <div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.3em;">Venta Total</p></div><div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.3em;">Total de lts</p></div>
-                <div class="div1" style="border-top: 1px solid #ff2600">
-                    <div class="div2"><p id="totalv3" style="font-size: 1.2em;"></p></div><div class="div2"><p id="totalts3" style="font-size: 1.2em;"></p></div>
-                </div>                
-            </div>
+            <div class="datosfin nv" id="promedio"></div>
 
             <div class="datosfin nv" id="rango">
                 <div class="div1">Introduce el rango de fecha</div>
                 <!-- <div class="div1"><p style="font-size: 1.2em;" id="fecha3"></p></div> -->
                 <div class="div1"><form onsubmit="return false"><div class="div05" style="font-size: .8em; margin-top:2.5%;">De </div> <div class="div75"><input type="date" id="fechai"></div> <div class="div05" style="font-size: .8em; margin-top:2.5%;">A</div> <div class="div75"><input type="date" id="fechaf"></div><div class="div8"><button id="btnfecha" onclick="enviarF(this.form)"><img src="img/icon/buscar1.png" id="iconbuscar"></button></div></form></div>
-
-                <div class="div3" style="display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: black;">Super</p></div><div class="div3" style="display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: white;">V-Power</p></div><div class="div3" style="display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;"><p style=" color: white; font-size: 1.4em;">Diesel</p></div>
                 
-                <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="preciom4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciop4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciod4" style="font-size: 1.1em;"></p></div>
+                <div id="primera">
+                    <div class="div3" style="display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: black;">Super</p></div><div class="div3" style="display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;"><p style="font-size: 1.4em; color: white;">V-Power</p></div><div class="div3" style="display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;"><p style=" color: white; font-size: 1.4em;">Diesel</p></div>
                 
-                <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="vendidom4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidop4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidod4" style="font-size: 1.1em;"></p></div>
-                 
-                <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="vtm4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vtp4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vtd4" style="font-size: 1.1em;"></p></div>
-               
-                <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="pm4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pp4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pd4" style="font-size: 1.1em;"></p></div>
-                
-                <div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.2em;">Venta Total</p></div><div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.2em;">Total de lts</p></div>
-                <div class="div1" style="border-top: 1px solid #ff2600">
-                    <div class="div2"><p id="totalv4" style="font-size: 1.2em;"></p></div><div class="div2"><p id="totalts4" style="font-size: 1.2em;"></p></div> 
+                    <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="preciom4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciop4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="preciod4" style="font-size: 1.1em;"></p></div>
+                    
+                    <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="vendidom4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidop4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vendidod4" style="font-size: 1.1em;"></p></div>
+                     
+                    <div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="vtm4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vtp4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;"><p id="vtd4" style="font-size: 1.1em;"></p></div>
+                   
+                    <div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;"><p id="pm4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pp4" style="font-size: 1.1em;"></p></div><div class="div3" style="display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;"><p id="pd4" style="font-size: 1.1em;"></p></div>
+                    
+                    <div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.2em;">Venta Total</p></div><div class="div2" style="margin-bottom: 1px;"><p style="font-size: 1.2em;">Total de lts</p></div>
+                    <div class="div1" style="border-top: 1px solid #ff2600">
+                        <div class="div2"><p id="totalv4" style="font-size: 1.2em;"></p></div><div class="div2"><p id="totalts4" style="font-size: 1.2em;"></p></div> 
+                    </div>
                 </div>
+                <div id="segunda"></div>
                 
             </div>
         </div>        

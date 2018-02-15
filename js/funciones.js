@@ -889,7 +889,7 @@ function promdmes() { //promedios del mes
         }
     }else{
         enviar = new XMLHttpRequest;
-        /*enviar.open('POST', '../../datosgas/datos.php');*/
+        //enviar.open('POST', '../../datosapp/datos.php');
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacione + '&flag=' + flag);
@@ -900,21 +900,24 @@ function promdmes() { //promedios del mes
                 fecha = sessionStorage.getItem("fecha");
                 fechas = fecha.split("/");
                 rango = respuesta.split("*");
-                document.getElementById("totalv3").innerHTML = "$" + rango[3];
-                document.getElementById("totalts3").innerHTML = rango[7] + " lts";
-                document.getElementById("fecha3").innerHTML = "Promedio de "+meses[parseInt(fechas[1])]+" "+fechas[2];
-                document.getElementById("preciom3").innerHTML = "$" + rango[11];
-                document.getElementById("preciop3").innerHTML = "$" + rango[12];
-                document.getElementById("preciod3").innerHTML = "$" + rango[13];
-                document.getElementById("litrosm3").innerHTML = rango[4]+"lts";
-                document.getElementById("litrosp3").innerHTML = rango[5]+"lts";
-                document.getElementById("litrosd3").innerHTML = rango[6]+"lts";
-                document.getElementById("vendidom3").innerHTML = "$" + rango[0];
-                document.getElementById("vendidop3").innerHTML = "$" + rango[1];
-                document.getElementById("vendidod3").innerHTML = "$" + rango[2];
-                document.getElementById("pm3").innerHTML = rango[8]+"%";
-                document.getElementById("pp3").innerHTML = rango[9]+"%";
-                document.getElementById("pd3").innerHTML = rango[10]+"%";
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("promedio").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio de "+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
             }
         }
     }    
@@ -1015,6 +1018,7 @@ function tipoCorte(cambio) {
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
         document.getElementById("rfechat").style.borderBottom = "none";
+        document.getElementById("primera").classList.remove("no");
     }
     if (opcion == "pmes") {
         porm.classList.add("ver");
@@ -1032,6 +1036,8 @@ function tipoCorte(cambio) {
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
         document.getElementById("rfechat").style.borderBottom = "none";
+
+        document.getElementById("primera").classList.remove("no");
         pormes();
     }
     if (opcion == "promedio") {
@@ -1050,6 +1056,8 @@ function tipoCorte(cambio) {
         ranf.classList.add("nv");
         ranf.classList.remove("ver");
         document.getElementById("rfechat").style.borderBottom = "none";
+
+        document.getElementById("primera").classList.remove("no");
         promdmes();
     }
     if (opcion == "rfecha") {
@@ -1068,6 +1076,7 @@ function tipoCorte(cambio) {
         prom.classList.add("nv");
         prom.classList.remove("ver");
         document.getElementById("promediot").style.borderBottom = "none";
+        document.getElementById("segunda").classList.add("no");
         porfecha()
     }
 }
@@ -1080,6 +1089,11 @@ function enviarF(form) { //rango de fecha se acciona con el boton
     flag = "fechaFin";
     finicio = finicio.split('-').reverse().join('/');
     ffin = ffin.split('-').reverse().join('/');
+
+    document.getElementById("primera").classList.add('no');
+    document.getElementById("segunda").classList.remove('no')
+
+    //alert('fechain'+finicio+'fechafin'+ffin);
 
     if(estacione == 7){
         if (finicio != "") {
@@ -1133,28 +1147,53 @@ function enviarF(form) { //rango de fecha se acciona con el boton
             verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
         }
     }else{
+        //alert("no es servi");
         if (finicio != "") {
             if (ffin != "") {
-                //alert(finicio);alert(ffin);
+                //alert(finicio+"hasta"+ffin);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
                 diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
                 diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
-                //alert(diainicio);alert(diafin);
                 if(diafin >= diainicio){
+                    //alert("cumple condicion");
+                    finiciog = finicio.split('/').reverse().join('-');
+                    ffing = ffin.split('/').reverse().join('-');
+                    //alert(finiciog+"hasta"+ffing);
                     enviar = new XMLHttpRequest;
-                    /*enviar.open('POST', 'datos.php');*/
+                    //enviar.open('POST', '../../datosapp/datos.php');
                     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
                     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                     enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200) {
                             respuesta = enviar.responseText;
-                            /*alert(respuesta);*/
+                            //alert(respuesta);
                             rango = respuesta.split("*");
-                            document.getElementById("totalv4").innerHTML = "$" + rango[3];
+                            numero = (rango.length);
+                            //alert(numero);
+                            numero = numero/15;
+                            numero = Math.round(numero);
+                            //alert(numero);
+                            o=0;
+                            p=4;
+                            q=8;
+                            r=11;
+                            s=14;
+
+                            for (i = 0; i < numero; i++) { //or normal
+                                document.getElementById("segunda").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio  "+rango[s]+"</p></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Diesel</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom4' style='font-size: 1.1em;'>$"+rango[r]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop4' style='font-size: 1.1em;'>$"+rango[r+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod4' style='font-size: 1.1em;'>$"+rango[r+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom4' style='font-size: 1.1em;'>"+rango[p]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop4' style='font-size: 1.1em;'>"+rango[p+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod4' style='font-size: 1.1em;'>"+rango[p+2]+"lts</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vtm4' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtp4' style='font-size: 1.1em;'>$"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtd4' style='font-size: 1.1em;'>$"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm4' style='font-size: 1.1em;'>"+rango[q]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp4' style='font-size: 1.1em;'>"+rango[q+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd4' style='font-size: 1.1em;'>"+rango[q+2]+"</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Total de lts</p></div> <div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv4' style='font-size: 1.2em;'>$"+rango[o+3]+"</p></div><div class='div2'><p id='totalts4' style='font-size: 1.2em;'>$"+rango[p+3]+"</p></div>";
+                                o=o+15;
+                                p=p+15;
+                                q=q+15;
+                                r=r+15;
+                                s=s+15;
+                                //alert(m,n,l,o,p);
+                            }
+
+                            /*document.getElementById("totalv4").innerHTML = "$" + rango[3];
                             document.getElementById("totalts4").innerHTML = rango[7] + " lts";
-                            /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
+                            document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;
                             document.getElementById("preciom4").innerHTML = "$" + rango[11];
                             document.getElementById("preciop4").innerHTML = "$" + rango[12];
                             document.getElementById("preciod4").innerHTML = "$" + rango[13];
@@ -1166,12 +1205,12 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                             document.getElementById("vtd4").innerHTML = "$" + rango[2];
                             document.getElementById("pm4").innerHTML = rango[8]+"%";
                             document.getElementById("pp4").innerHTML = rango[9]+"%";
-                            document.getElementById("pd4").innerHTML = rango[10]+"%";
+                            document.getElementById("pd4").innerHTML = rango[10]+"%";*/
 
                         }
                     }
                 }else{
-                    verModal('grande', '', 'Ok', 'Verifica las fechas, rango incorrecto.');
+                    verModal('grande', '', 'Ok', 'La fecha de fin es anterior a la fecha de inicio');
                 }
             } else {
                 verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
