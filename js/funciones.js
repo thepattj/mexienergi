@@ -1172,13 +1172,13 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200) {
                             respuesta = enviar.responseText;
-                            //alert(respuesta);
+                            alert("resp"+respuesta);
                             rango = respuesta.split("*");
                             numero = (rango.length);
-                            //alert(numero);
+                            alert("cantdat"+numero);
                             numero = numero/15;
                             numero = Math.round(numero);
-                            //alert(numero);
+                            alert("row"+numero);
                             o=0;
                             p=4;
                             q=8;
