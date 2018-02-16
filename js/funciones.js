@@ -853,7 +853,10 @@ function pormes() { //ventas hasta el dia actual del mes
     }    
 }
 
-function promdmes() { //promedios del mes    
+function promdmes() { //promedios del mes
+    var d = document.getElementById("promedio");
+    while (d.hasChildNodes())
+      d.removeChild(d.firstChild);    
     estacione = sessionStorage.getItem("staact");
     flag = "promedioFin";
     if(estacione == 7){
