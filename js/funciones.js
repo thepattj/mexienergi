@@ -3,7 +3,7 @@ esta = new Array();
 dir = new Array();
 estaf = new Array();
 vali = new Array();
-dirimg = new Array("http://www.mexienergi.com/aplicacion/imgsta/aero.jpg","http://www.mexienergi.com/aplicacion/imgsta/campa.jpg","http://www.mexienergi.com/aplicacion/imgsta/epig.jpg","http://www.mexienergi.com/aplicacion/imgsta/northm.jpg","http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg","http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg", "http://www.mexienergi.com/aplicacion/imgsta/servif.jpg");
+dirimg = new Array("http://www.mexienergi.com/aplicacion/imgsta/aero.jpg","http://www.mexienergi.com/aplicacion/imgsta/campa.jpg","http://www.mexienergi.com/aplicacion/imgsta/epig.jpg","http://www.mexienergi.com/aplicacion/imgsta/northm.jpg","http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg","http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg", "http://www.mexienergi.com/aplicacion/imgsta/servif.jpg", "http://www.mexienergi.com/aplicacion/imgsta/previa.jpg");
 /*dirlog = new Array("http://www.mexienergi.com/aplicacion/logos/iconaeropuerto.png","http://www.mexienergi.com/aplicacion/logos/icontlacote.png","http://www.mexienergi.com/aplicacion/logos/iconmacias.png","http://www.mexienergi.com/aplicacion/logos/iconarcangel.png","http://www.mexienergi.com/aplicacion/logos/iconepigmenio.png","http://www.mexienergi.com/aplicacion/logos/iconnorthm.png", "http://www.mexienergi.com/aplicacion/logos/iconproxr.png");/*"http://www.mexienergi.com/aplicacion/logos/iconprox.png"*/
 /*datos = new Array();*/
 /*var permiso;
@@ -315,10 +315,7 @@ function consolidado(){
             }
         }            
     }
-    consolidado2();
-}
 
-function consolidado2(){
     estaci = sessionStorage.getItem("esc");
     flag = "consolida";
     mandar = new XMLHttpRequest;
@@ -353,6 +350,74 @@ function consolidado2(){
         }            
     }
 
+
+    estaci = sessionStorage.getItem("esc");
+    flag = "consolida";
+    env = new XMLHttpRequest;
+    //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+    env.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+    env.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    env.send('est=' + estaci + '&flag=' + flag);
+    env.onreadystatechange = function () {
+        if (env.readyState == 4 && env.status == 200) {
+            respuesta = env.responseText;
+            //alert(respuesta);
+            if(respuesta == ""){
+            }
+            else{
+                /*sessionStorage.setItem("semsta", respuesta);*/
+                sepa = respuesta.split("*");
+                //alert(sepa)
+                numero = (sepa.length);
+                j=1;
+                k=2;
+                l=3;
+                m=4
+                for(Z=0; Z<numero; Z+=6){
+                    document.querySelector(".divtabla3").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    
+                    j = j+5;
+                    k=k+5;
+                    l=l+5;
+                    m=m+5;
+                }
+            }
+        }            
+    }
+
+    estaci = sessionStorage.getItem("esc");
+    flag = "consolida";
+    mane = new XMLHttpRequest;
+    //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+    mane.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
+    mane.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    mane.send('est=' + estaci + '&flag=' + flag);
+    mane.onreadystatechange = function () {
+        if (mane.readyState == 4 && mane.status == 200) {
+            respuesta = mane.responseText;
+            //alert(respuesta);
+            if(respuesta == ""){
+            }
+            else{
+                /*sessionStorage.setItem("semsta", respuesta);*/
+                sepa = respuesta.split("*");
+                //alert(sepa)
+                numero = (sepa.length);
+                j=1;
+                k=2;
+                l=3;
+                m=4
+                for(Z=0; Z<numero; Z+=6){
+                    document.querySelector(".divtabla4").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    
+                    j = j+5;
+                    k=k+5;
+                    l=l+5;
+                    m=m+5;
+                }
+            }
+        }            
+    }
 }
 
 function progres(){
@@ -639,12 +704,15 @@ function mostrarcorte() {
             l=0;
             for (i = 0; i <= numero; i++) {
                 if (separar[m] == 1 || separar[m] == 2 || separar[m] == 4 || separar[m] == 6 ){
-                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/mexi.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
                 if(separar[m] == 3 || separar[m] == 5 || separar[m] == 7){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";
                 }
-                if(separar[m] == 9 || separar[m] == 10 || separar[m] == 11 || separar[m] == 8){
+                if(separar[m] == 9 || separar[m] == 8){
+                    document.getElementById("menusta").innerHTML += " <div class='divestacion' onclick='vercorte(this.id)' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";   
+                }
+                if(separar[m] == 10 || separar[m] == 11){
                     document.getElementById("menusta").innerHTML += " <div class='divestacion' id='"+separar[m]+"'> <div class='div80' style='margin-left: 10%;'> <div class='div1'><div class='div20'><img src='http://www.mexienergi.com/aplicacion/imgsta/shell.png' style='width: 80%; height:80%;'></div><div class='div80' style='background: rgba(255,38,0,1); border-radius:5px;'><span style='display: flex; justify-content: center; margin-top:3%; color: white; font-size: 1.5em;'> "+separar[j]+"</span> </div></div> </div> </div>";   
                 }
 
@@ -705,9 +773,78 @@ function muestrae() {
     if(estacione == 7){
         estacionns = 1;
         //alert("SE FELIZ YA FUNCIONA");
+        enviando = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviando.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        enviando.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviando.send('idesta=' + estacionns + '&flag=' + flag);
+        enviando.onreadystatechange = function () {
+            if (enviando.readyState == 4 && enviando.status == 200) {
+                respuesta = enviando.responseText;
+                //alert(respuesta);
+                datos = respuesta.split("*");
+                fecha = datos[2];
+                sessionStorage.setItem("fecha", fecha);
+                document.getElementById("nombre").innerHTML = datos[0];
+                if(datos[0] == "SERVIFIGUES"){
+                    image = document.getElementById("bannersta");
+                    image.src = dirimg[6];
+                }
+                document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
+                document.getElementById("preciom").innerHTML = "$" + datos[3];
+                document.getElementById("preciop").innerHTML = "$" + datos[4];
+                document.getElementById("preciod").innerHTML = "$" + datos[5];
+                document.getElementById("vendidom").innerHTML = datos[6]+"lts";
+                document.getElementById("vendidop").innerHTML = datos[7]+"lts";
+                document.getElementById("vendidod").innerHTML = datos[8]+"lts";
+                document.getElementById("pm").innerHTML = datos[10]+"%";
+                document.getElementById("pp").innerHTML = datos[11]+"%";
+                document.getElementById("pd").innerHTML = datos[12]+"%";
+                document.getElementById("totalv").innerHTML = "$"+datos[1];
+                document.getElementById("totalts").innerHTML = datos[9]+"lts";
+            }
+        }
+    }if(estacione == 8){
+        estacionns = 2;
+        //alert("SE FELIZ YA FUNCIONA");
+        snd = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        snd.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+        snd.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        snd.send('idesta=' + estacionns + '&flag=' + flag);
+        snd.onreadystatechange = function () {
+            if (snd.readyState == 4 && snd.status == 200) {
+                respuesta = snd.responseText;
+                //alert(respuesta);
+                datos = respuesta.split("*");
+                fecha = datos[2];
+                sessionStorage.setItem("fecha", fecha);
+                document.getElementById("nombre").innerHTML = datos[0];
+                if(datos[0] == "BALVAQRO"){
+                    image = document.getElementById("bannersta");
+                    image.src = dirimg[7];
+                }
+                document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
+                document.getElementById("preciom").innerHTML = "$" + datos[3];
+                document.getElementById("preciop").innerHTML = "$" + datos[4];
+                document.getElementById("preciod").innerHTML = "$" + datos[5];
+                document.getElementById("vendidom").innerHTML = datos[6]+"lts";
+                document.getElementById("vendidop").innerHTML = datos[7]+"lts";
+                document.getElementById("vendidod").innerHTML = datos[8]+"lts";
+                document.getElementById("pm").innerHTML = datos[10]+"%";
+                document.getElementById("pp").innerHTML = datos[11]+"%";
+                document.getElementById("pd").innerHTML = datos[12]+"%";
+                document.getElementById("totalv").innerHTML = "$"+datos[1];
+                document.getElementById("totalts").innerHTML = datos[9]+"lts";
+            }
+        }
+    }
+    if(estacione == 9) {
+        estacionns = 3;
+        //alert("SE FELIZ YA FUNCIONA");
         enviar = new XMLHttpRequest;
         //enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
         enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         enviar.send('idesta=' + estacionns + '&flag=' + flag);
         enviar.onreadystatechange = function () {
@@ -718,9 +855,9 @@ function muestrae() {
                 fecha = datos[2];
                 sessionStorage.setItem("fecha", fecha);
                 document.getElementById("nombre").innerHTML = datos[0];
-                if(datos[0] == "SERVIFIGUES"){
+                if(datos[0] == "Rio SJR"){
                     image = document.getElementById("bannersta");
-                    image.src = dirimg[6];
+                    image.src = dirimg[7];
                 }
                 document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
                 document.getElementById("preciom").innerHTML = "$" + datos[3];
@@ -785,8 +922,12 @@ function muestrae() {
         }
     }
 }
-
+//MODIFICACIONES PARA EL PHP ESPERAR
 function pormes() { //ventas hasta el dia actual del mes
+    var d = document.querySelector("#mes"); //VARIABLE PARA PODER QUITAR EL CHILD
+    while (d.hasChildNodes())
+            d.removeChild(d.firstChild);
+            
     estacione = sessionStorage.getItem("staact");
     flag = "ventaFin";
     if(estacione == 7){
@@ -803,24 +944,95 @@ function pormes() { //ventas hasta el dia actual del mes
                 fecha = sessionStorage.getItem("fecha");
                 fechas = fecha.split("/");
                 rango = respuesta.split("*");
-                document.getElementById("totalv2").innerHTML = "$" + rango[3];
-                document.getElementById("totalts2").innerHTML = rango[7] + " lts";
-                document.getElementById("fecha2").innerHTML = meses[parseInt(fechas[1])]+" "+fechas[2];
-                document.getElementById("preciom2").innerHTML = "$" + rango[11];
-                document.getElementById("preciop2").innerHTML = "$" + rango[12];
-                document.getElementById("preciod2").innerHTML = "$" + rango[13];
-                document.getElementById("litrosm2").innerHTML = rango[4]+"lts";
-                document.getElementById("litrosp2").innerHTML = rango[5]+"lts";
-                document.getElementById("litrosd2").innerHTML = rango[6]+"lts";
-                document.getElementById("vendidom2").innerHTML = "$" + rango[0];
-                document.getElementById("vendidop2").innerHTML = "$" + rango[1];
-                document.getElementById("vendidod2").innerHTML = "$" + rango[2];
-                document.getElementById("pm2").innerHTML = rango[8]+"%";
-                document.getElementById("pp2").innerHTML = rango[9]+"%";
-                document.getElementById("pd2").innerHTML = rango[10]+"%";
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("mes").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>"+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
             }
         }
-    }else{
+    }if(estacione == 8){
+        estacionns = 2;
+        enviar = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviar.send('idesta=' + estacionns + '&flag=' + flag);
+        enviar.onreadystatechange = function () {
+            if (enviar.readyState == 4 && enviar.status == 200) {
+                respuesta = enviar.responseText;
+                //alert(respuesta);
+                fecha = sessionStorage.getItem("fecha");
+                fechas = fecha.split("/");
+                rango = respuesta.split("*");
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("mes").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>"+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
+            }
+        }
+    } if(estacione == 9){
+        estacionns = 3;
+        enviar = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
+        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviar.send('idesta=' + estacionns + '&flag=' + flag);
+        enviar.onreadystatechange = function () {
+            if (enviar.readyState == 4 && enviar.status == 200) {
+                respuesta = enviar.responseText;
+                //alert(respuesta);
+                fecha = sessionStorage.getItem("fecha");
+                fechas = fecha.split("/");
+                rango = respuesta.split("*");
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("mes").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>"+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
+            }
+        }
+    } if(estacione == 1 || estacione == 2 || estacione == 3 || estacione == 4 || estacione == 5 || estacione == 6){
         enviar = new XMLHttpRequest;
         /*enviar.open('POST', '../../datosgas/datos.php');*/
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
@@ -829,34 +1041,39 @@ function pormes() { //ventas hasta el dia actual del mes
         enviar.onreadystatechange = function () {
             if (enviar.readyState == 4 && enviar.status == 200) {
                 respuesta = enviar.responseText;
-                /*alert(respuesta);*/
+                //alert(respuesta);
                 fecha = sessionStorage.getItem("fecha");
                 fechas = fecha.split("/");
                 rango = respuesta.split("*");
-                document.getElementById("totalv2").innerHTML = "$" + rango[3];
-                document.getElementById("totalts2").innerHTML = rango[7] + " lts";
-                document.getElementById("fecha2").innerHTML = meses[parseInt(fechas[1])]+" "+fechas[2];
-                document.getElementById("preciom2").innerHTML = "$" + rango[11];
-                document.getElementById("preciop2").innerHTML = "$" + rango[12];
-                document.getElementById("preciod2").innerHTML = "$" + rango[13];
-                document.getElementById("litrosm2").innerHTML = rango[4]+"lts";
-                document.getElementById("litrosp2").innerHTML = rango[5]+"lts";
-                document.getElementById("litrosd2").innerHTML = rango[6]+"lts";
-                document.getElementById("vendidom2").innerHTML = "$" + rango[0];
-                document.getElementById("vendidop2").innerHTML = "$" + rango[1];
-                document.getElementById("vendidod2").innerHTML = "$" + rango[2];
-                document.getElementById("pm2").innerHTML = rango[8]+"%";
-                document.getElementById("pp2").innerHTML = rango[9]+"%";
-                document.getElementById("pd2").innerHTML = rango[10]+"%";
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("mes").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>"+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
             }
         }
     }    
 }
 
 function promdmes() { //promedios del mes
-    var d = document.getElementById("promedio");
+    var d = document.querySelector("#promedio");
+
     while (d.hasChildNodes())
-      d.removeChild(d.firstChild);    
+            d.removeChild(d.firstChild);
+   
     estacione = sessionStorage.getItem("staact");
     flag = "promedioFin";
     if(estacione == 7){
@@ -893,7 +1110,75 @@ function promdmes() { //promedios del mes
                 }
             }
         }
-    }else{
+    }if(estacione == 8){
+        estacionns = 2;
+        enviar = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosapp/datos.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviar.send('idesta=' + estacionns + '&flag=' + flag);
+        enviar.onreadystatechange = function () {
+            if (enviar.readyState == 4 && enviar.status == 200) {
+                respuesta = enviar.responseText;
+                //alert(respuesta);
+                fecha = sessionStorage.getItem("fecha");
+                fechas = fecha.split("/");
+                rango = respuesta.split("*");
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("promedio").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio de "+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
+            }
+        }
+    }if(estacione == 9){
+        estacionns = 3;
+        enviar = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosapp/datos.php');
+        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
+        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        enviar.send('idesta=' + estacionns + '&flag=' + flag);
+        enviar.onreadystatechange = function () {
+            if (enviar.readyState == 4 && enviar.status == 200) {
+                respuesta = enviar.responseText;
+                //alert(respuesta);
+                fecha = sessionStorage.getItem("fecha");
+                fechas = fecha.split("/");
+                rango = respuesta.split("*");
+                numero = (rango.length);
+                numero = (numero - 1)/15;
+                //alert(numero);
+                m=0;
+                n=4;
+                l=8;
+                o=11;
+                p=14;
+
+                for (i = 0; i < numero; i++) { //or normal
+                    document.getElementById("promedio").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio de "+rango[p]+"</p></div><div class='div1'></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='color: white; font-size: 1.4em;'>Diesel</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom3' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop3' style='font-size: 1.1em;'>"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod3' style='font-size: 1.1em;'>"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='litrosm3' style='font-size: 1.1em;'>"+rango[n]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosp3' style='font-size: 1.1em;'>"+rango[n+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='litrosd3' style='font-size: 1.1em;'>"+rango[n+2]+"lts</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom3' style='font-size: 1.1em;'>$"+rango[m]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop3' style='font-size: 1.1em;'>$"+rango[m+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod3' style='font-size: 1.1em;'>$"+rango[m+2]+"</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm3' style='font-size: 1.1em;'>"+rango[l]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp3' style='font-size: 1.1em;'>"+rango[l+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd3' style='font-size: 1.1em;'>"+rango[l+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.3em;'>Total de lts</p></div><div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv3' style='font-size: 1.2em;'>$"+rango[m+3]+"</p></div><div class='div2'><p id='totalts3' style='font-size: 1.2em;'>"+rango[n+3]+"</p></div></div>";
+                    m=m+15;
+                    n=n+15;
+                    l=l+15;
+                    o=o+15;
+                    p=p+15;
+                    //alert(m,n,l,o,p);
+                }
+            }
+        }
+    }if(estacione == 1 || estacione == 2 || estacione == 3 || estacione == 4 || estacione == 5 || estacione == 6){
         enviar = new XMLHttpRequest;
         //enviar.open('POST', '../../datosapp/datos.php');
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
@@ -938,14 +1223,14 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
     if(estacione == 7){
         estacionns = 1;
         //alert(estacione+"fechainicio"+finicio+"fecha fin"+ffin);
-        enviar = new XMLHttpRequest;
+        penvio = new XMLHttpRequest;
         //enviar.open('POST', '../../datosprueba/datoslocalns.php');
-        enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
-        enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        enviar.send('idesta=' + estacionns + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
-        enviar.onreadystatechange = function () {
-            if (enviar.readyState == 4 && enviar.status == 200) {
-                respuesta = enviar.responseText;
+        penvio.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
+        penvio.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        penvio.send('idesta=' + estacionns + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+        penvio.onreadystatechange = function () {
+            if (penvio.readyState == 4 && penvio.status == 200) {
+                respuesta = penvio.responseText;
                 /*alert(respuesta);*/
                 rango = respuesta.split("*");
                 document.getElementById("totalv4").innerHTML = "$" + rango[3];
@@ -968,7 +1253,73 @@ function porfecha() { //carga la fecha actual en la seccion de rango,
                 document.getElementById("fechaf").value =fecha;
             }
         }
-    }else{
+    }if(estacione == 8){
+        estacionns = 2;
+        //alert(estacione+"fechainicio"+finicio+"fecha fin"+ffin);
+        e = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        e.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+        e.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        e.send('idesta=' + estacionns + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+        e.onreadystatechange = function () {
+            if (e.readyState == 4 && e.status == 200) {
+                respuesta = e.responseText;
+                /*alert(respuesta);*/
+                rango = respuesta.split("*");
+                document.getElementById("totalv4").innerHTML = "$" + rango[3];
+                document.getElementById("totalts4").innerHTML = rango[7] + " lts";
+                /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
+                document.getElementById("preciom4").innerHTML = "$" + rango[11];
+                document.getElementById("preciop4").innerHTML = "$" + rango[12];
+                document.getElementById("preciod4").innerHTML = "$" + rango[13];
+                document.getElementById("vendidom4").innerHTML = rango[4]+"lts";
+                document.getElementById("vendidop4").innerHTML = rango[5]+"lts";
+                document.getElementById("vendidod4").innerHTML = rango[6]+"lts";
+                document.getElementById("vtm4").innerHTML = "$" + rango[0];
+                document.getElementById("vtp4").innerHTML = "$" + rango[1];
+                document.getElementById("vtd4").innerHTML = "$" + rango[2];
+                document.getElementById("pm4").innerHTML = rango[8]+"%";
+                document.getElementById("pp4").innerHTML = rango[9]+"%";
+                document.getElementById("pd4").innerHTML = rango[10]+"%";
+                fecha = finicio.split('/').reverse().join('-');
+                document.getElementById("fechai").value =fecha;
+                document.getElementById("fechaf").value =fecha;
+            }
+        }
+    }if(estacione == 9){
+        estacionns = 3;
+        //alert(estacione+"fechainicio"+finicio+"fecha fin"+ffin);
+        sm = new XMLHttpRequest;
+        //enviar.open('POST', '../../datosprueba/datoslocalns.php');
+        sm.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
+        sm.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        sm.send('idesta=' + estacionns + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+        sm.onreadystatechange = function () {
+            if (sm.readyState == 4 && sm.status == 200) {
+                respuesta = sm.responseText;
+                /*alert(respuesta);*/
+                rango = respuesta.split("*");
+                document.getElementById("totalv4").innerHTML = "$" + rango[3];
+                document.getElementById("totalts4").innerHTML = rango[7] + " lts";
+                /*document.getElementById("fecha").innerHTML = ffalsa + " a " + ffalsa;*/
+                document.getElementById("preciom4").innerHTML = "$" + rango[11];
+                document.getElementById("preciop4").innerHTML = "$" + rango[12];
+                document.getElementById("preciod4").innerHTML = "$" + rango[13];
+                document.getElementById("vendidom4").innerHTML = rango[4]+"lts";
+                document.getElementById("vendidop4").innerHTML = rango[5]+"lts";
+                document.getElementById("vendidod4").innerHTML = rango[6]+"lts";
+                document.getElementById("vtm4").innerHTML = "$" + rango[0];
+                document.getElementById("vtp4").innerHTML = "$" + rango[1];
+                document.getElementById("vtd4").innerHTML = "$" + rango[2];
+                document.getElementById("pm4").innerHTML = rango[8]+"%";
+                document.getElementById("pp4").innerHTML = rango[9]+"%";
+                document.getElementById("pd4").innerHTML = rango[10]+"%";
+                fecha = finicio.split('/').reverse().join('-');
+                document.getElementById("fechai").value =fecha;
+                document.getElementById("fechaf").value =fecha;
+            }
+        }
+    }if(estacione == 1 || estacione == 2 || estacione == 3 || estacione == 4 || estacione == 5 || estacione == 6){
         enviar = new XMLHttpRequest;
         /*enviar.open('POST', 'datos.php');*/
         enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal.php'); //para empaquetar
@@ -1163,7 +1514,117 @@ function enviarF(form) { //rango de fecha se acciona con el boton
         }else{
             verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
         }
-    }else{
+    }if(estacione == 8){
+        //alert("no es servi");
+        if (finicio != "") {
+            if (ffin != "") {
+                estacione = 2;
+                //alert(finicio+"hasta"+ffin);
+                valorinicio = finicio.split("/");
+                valorfin = ffin.split("/");
+                diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
+                diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
+                if(diafin >= diainicio){
+                    //alert("cumple condicion");
+                    finiciog = finicio.split('/').reverse().join('-');
+                    ffing = ffin.split('/').reverse().join('-');
+                    //alert(finiciog+"hasta"+ffing);
+                    enviar = new XMLHttpRequest;
+                    //enviar.open('POST', '../../datosapp/datos.php');
+                    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
+                    enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.onreadystatechange = function () {
+                        if (enviar.readyState == 4 && enviar.status == 200){
+                            respuesta = enviar.responseText;
+                            //alert("resp"+respuesta);
+                            rango = respuesta.split("*");
+                            numero = (rango.length);
+                            //alert("cantdat"+numero);
+                            numero = numero/15;
+                            numero = Math.round(numero);
+                            //alert("row"+numero);
+                            o=0;
+                            p=4;
+                            q=8;
+                            r=11;
+                            s=14;
+                            for (i = 0; i < numero; i++) { //or normal
+                                document.getElementById("segunda").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio  "+rango[s]+"</p></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Diesel</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom4' style='font-size: 1.1em;'>$"+rango[r]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop4' style='font-size: 1.1em;'>$"+rango[r+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod4' style='font-size: 1.1em;'>$"+rango[r+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom4' style='font-size: 1.1em;'>"+rango[p]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop4' style='font-size: 1.1em;'>"+rango[p+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod4' style='font-size: 1.1em;'>"+rango[p+2]+"lts</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vtm4' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtp4' style='font-size: 1.1em;'>$"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtd4' style='font-size: 1.1em;'>$"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm4' style='font-size: 1.1em;'>"+rango[q]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp4' style='font-size: 1.1em;'>"+rango[q+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd4' style='font-size: 1.1em;'>"+rango[q+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Total de lts</p></div> <div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv4' style='font-size: 1.2em;'>$"+rango[o+3]+"</p></div><div class='div2'><p id='totalts4' style='font-size: 1.2em;'>"+rango[p+3]+" lts</p></div>";
+                                o=o+15;
+                                p=p+15;
+                                q=q+15;
+                                r=r+15;
+                                s=s+15;
+                                //alert(m,n,l,o,p);
+                            }
+                        }
+                    }
+                }else{
+                    verModal('grande', '', 'Ok', 'La fecha de fin es anterior a la fecha de inicio');
+                }
+            }else {
+                verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+            }
+        }else{
+            verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+        }
+    }if(estacione == 9){
+        //alert("no es servi");
+        if (finicio != "") {
+            if (ffin != "") {
+                estacione = 3;
+                //alert(finicio+"hasta"+ffin);
+                valorinicio = finicio.split("/");
+                valorfin = ffin.split("/");
+                diainicio = new Date(valorinicio[2],(valorinicio[1]-1),valorinicio[0]);
+                diafin = new Date(valorfin[2],(valorfin[1]-1),valorfin[0]);
+                if(diafin >= diainicio){
+                    //alert("cumple condicion");
+                    finiciog = finicio.split('/').reverse().join('-');
+                    ffing = ffin.split('/').reverse().join('-');
+                    //alert(finiciog+"hasta"+ffing);
+                    enviar = new XMLHttpRequest;
+                    //enviar.open('POST', '../../datosapp/datos.php');
+                    enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
+                    enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.onreadystatechange = function () {
+                        if (enviar.readyState == 4 && enviar.status == 200){
+                            respuesta = enviar.responseText;
+                            //alert("resp"+respuesta);
+                            rango = respuesta.split("*");
+                            numero = (rango.length);
+                            //alert("cantdat"+numero);
+                            numero = numero/15;
+                            numero = Math.round(numero);
+                            //alert("row"+numero);
+                            o=0;
+                            p=4;
+                            q=8;
+                            r=11;
+                            s=14;
+                            for (i = 0; i < numero; i++) { //or normal
+                                document.getElementById("segunda").innerHTML += "<div class='div1'></div> <div class='div1'><p style='font-size: 1.2em; color: #ff2600;' id='fecha3'>Promedio  "+rango[s]+"</p></div><div class='div3' style='display: block !important; background: #fddd0a; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;'>Super</p></div><div class='div3' style='display: block !important; background: #ba031d; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>V-Power</p></div><div class='div3' style='display: block !important; background: #000000; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Diesel</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='preciom4' style='font-size: 1.1em;'>$"+rango[r]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciop4' style='font-size: 1.1em;'>$"+rango[r+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='preciod4' style='font-size: 1.1em;'>$"+rango[r+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vendidom4' style='font-size: 1.1em;'>"+rango[p]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidop4' style='font-size: 1.1em;'>"+rango[p+1]+"lts</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vendidod4' style='font-size: 1.1em;'>"+rango[p+2]+"lts</p></div> <div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='vtm4' style='font-size: 1.1em;'>$"+rango[o]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtp4' style='font-size: 1.1em;'>$"+rango[o+1]+"</p></div><div class='div3' style='display: block !important; background: rgba(64,78,103,.6); margin-right: 0% !important; margin-bottom: 4px !important;'><p id='vtd4' style='font-size: 1.1em;'>$"+rango[o+2]+"</p></div> <div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p id='pm4' style='font-size: 1.1em;'>"+rango[q]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pp4' style='font-size: 1.1em;'>"+rango[q+1]+"%</p></div><div class='div3' style='display: block !important; background: white; margin-right: 0% !important; margin-bottom: 4px !important;'><p id='pd4' style='font-size: 1.1em;'>"+rango[q+2]+"%</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Venta Total</p></div><div class='div2' style='margin-bottom: 1px;'><p style='font-size: 1.2em;'>Total de lts</p></div> <div class='div1' style='border-top: 1px solid #ff2600'> <div class='div2'><p id='totalv4' style='font-size: 1.2em;'>$"+rango[o+3]+"</p></div><div class='div2'><p id='totalts4' style='font-size: 1.2em;'>"+rango[p+3]+" lts</p></div>";
+                                o=o+15;
+                                p=p+15;
+                                q=q+15;
+                                r=r+15;
+                                s=s+15;
+                                //alert(m,n,l,o,p);
+                            }
+                        }
+                    }
+                }else{
+                    verModal('grande', '', 'Ok', 'La fecha de fin es anterior a la fecha de inicio');
+                }
+            }else {
+                verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+            }
+        }else{
+            verModal('grande', '', 'Ok', 'Selecciona correctamente las fechas.');
+        }
+    }if(estacione == 1 || estacione == 2 || estacione == 3 || estacione == 4 || estacione == 5 || estacione == 6){
         //alert("no es servi");
         if (finicio != "") {
             if (ffin != "") {
