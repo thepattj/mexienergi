@@ -102,25 +102,20 @@ function vermenu(){
 /*function menuhead(tipo, texto, texto2, texto3, texto4, texto5, parrafo){
     bgNegros = document.getElementById('bg-negros');
     modals = document.getElementById('modals');
-
     bgNegros.classList.add('verModal');
     modals.classList.add('verModal');
-
     if (tipo == 'chico') {
         parrafo = ""
     } else {
         parrafo = parrafo;
     }
-
     modals.innerHTML+= "<h1 style='color: white;' onclick='pagina(\""+'inicio.html'+"\")'>" + texto + "</h1>" +
                        "<h1 style='color: white;' onclick='pagina(\""+'corte.html'+"\")'>" + texto2 + "</h1>" +
                        "<h1 style='color: white;' onclick='pagina(\""+'mapa.html'+"\")'>" + texto3 + "</h1>" +
                        "<h1 style='color: white;' onclick='pagina(\""+'semaforo.html'+"\")'>" + texto4 + "</h1>" +
                        "<h1 style='color: white;' onclick=' salir() '>" + texto5 + "</h1>" +
                        "<div class='div3'></div>";
-
     modals.classList.add(tipo);
-
     tipo = tipo;
 }*/
 
@@ -1463,7 +1458,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
         //alert("no es servi");
         if (finicio != "") {
             if (ffin != "") {
-                estacione = 1;
+                estacn = 1;
                 //alert(finicio+"hasta"+ffin);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
@@ -1478,7 +1473,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                     //enviar.open('POST', '../../datosapp/datos.php');
                     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalns.php'); //para empaquetar
                     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.send('idesta=' + estacn + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200){
                             respuesta = enviar.responseText;
@@ -1518,7 +1513,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
         //alert("no es servi");
         if (finicio != "") {
             if (ffin != "") {
-                estacione = 2;
+                estacn2 = 2;
                 //alert(finicio+"hasta"+ffin);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
@@ -1533,7 +1528,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                     //enviar.open('POST', '../../datosapp/datos.php');
                     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalbal.php'); //para empaquetar
                     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.send('idesta=' + estacn2 + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200){
                             respuesta = enviar.responseText;
@@ -1573,7 +1568,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
         //alert("no es servi");
         if (finicio != "") {
             if (ffin != "") {
-                estacione = 3;
+                estacin3 = 3;
                 //alert(finicio+"hasta"+ffin);
                 valorinicio = finicio.split("/");
                 valorfin = ffin.split("/");
@@ -1588,7 +1583,7 @@ function enviarF(form) { //rango de fecha se acciona con el boton
                     //enviar.open('POST', '../../datosapp/datos.php');
                     enviar.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
                     enviar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    enviar.send('idesta=' + estacione + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
+                    enviar.send('idesta=' + estacin3 + '&fecini=' + finicio + '&fecfin=' + ffin + '&flag=' + flag);
                     enviar.onreadystatechange = function () {
                         if (enviar.readyState == 4 && enviar.status == 200){
                             respuesta = enviar.responseText;
