@@ -3,7 +3,7 @@ esta = new Array();
 dir = new Array();
 estaf = new Array();
 vali = new Array();
-dirimg = new Array("http://www.mexienergi.com/aplicacion/imgsta/aero.jpg","http://www.mexienergi.com/aplicacion/imgsta/campa.jpg","http://www.mexienergi.com/aplicacion/imgsta/epig.jpg","http://www.mexienergi.com/aplicacion/imgsta/northm.jpg","http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg","http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg", "http://www.mexienergi.com/aplicacion/imgsta/servif.jpg", "http://www.mexienergi.com/aplicacion/imgsta/previa.jpg");
+dirimg = new Array("http://www.mexienergi.com/aplicacion/imgsta/aero.jpg","http://www.mexienergi.com/aplicacion/imgsta/campa.jpg","http://www.mexienergi.com/aplicacion/imgsta/epig.jpg","http://www.mexienergi.com/aplicacion/imgsta/northm.jpg","http://www.mexienergi.com/aplicacion/imgsta/sjr.jpg","http://www.mexienergi.com/aplicacion/imgsta/tlaco.jpg", "http://www.mexienergi.com/aplicacion/imgsta/servif.jpg", "http://www.mexienergi.com/aplicacion/imgsta/100500.jpg", "http://www.mexienergi.com/aplicacion/imgsta/rio.jpg", "http://www.mexienergi.com/aplicacion/imgsta/sur.jpg","http://www.mexienergi.com/aplicacion/imgsta/balva.jpg");
 /*dirlog = new Array("http://www.mexienergi.com/aplicacion/logos/iconaeropuerto.png","http://www.mexienergi.com/aplicacion/logos/icontlacote.png","http://www.mexienergi.com/aplicacion/logos/iconmacias.png","http://www.mexienergi.com/aplicacion/logos/iconarcangel.png","http://www.mexienergi.com/aplicacion/logos/iconepigmenio.png","http://www.mexienergi.com/aplicacion/logos/iconnorthm.png", "http://www.mexienergi.com/aplicacion/logos/iconproxr.png");/*"http://www.mexienergi.com/aplicacion/logos/iconprox.png"*/
 /*datos = new Array();*/
 /*var permiso;
@@ -896,7 +896,7 @@ function muestrae() {
                 document.getElementById("nombre").innerHTML = datos[0];
                 if(datos[0] == "BALVAQRO"){
                     image = document.getElementById("bannersta");
-                    image.src = dirimg[7];
+                    image.src = dirimg[10];
                 }
                 document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
                 document.getElementById("preciom").innerHTML = "$" + datos[3];
@@ -932,7 +932,7 @@ function muestrae() {
                 document.getElementById("nombre").innerHTML = datos[0];
                 if(datos[0] == "Rio SJR"){
                     image = document.getElementById("bannersta");
-                    image.src = dirimg[7];
+                    image.src = dirimg[8];
                 }
                 document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
                 document.getElementById("preciom").innerHTML = "$" + datos[3];
@@ -1004,7 +1004,7 @@ function muestrae() {
                 document.getElementById("nombre").innerHTML = datos[0];
                 if(datos[0] == "SQP"){
                     image = document.getElementById("bannersta");
-                    image.src = dirimg[7];
+                    image.src = dirimg[9];
                 }
                 document.getElementById("fecha").innerHTML = "Fecha de corte: "+fecha;
                 document.getElementById("preciom").innerHTML = "$" + datos[3];
