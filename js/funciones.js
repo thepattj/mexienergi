@@ -384,17 +384,17 @@ function consolidado(){
     }
 
     //LLENADO DE ESTACION DE RIO 
-    estaci = sessionStorage.getItem("esc");
+    tramae = sessionStorage.getItem("esc");
     flag = "consolida";
     mane = new XMLHttpRequest;
     //enviar.open('POST', '../../datosprueba/datoslocalns.php');
     mane.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalrio.php'); //para empaquetar
     mane.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    mane.send('est=' + estaci + '&flag=' + flag);
+    mane.send('est=' + tramae + '&flag=' + flag);
     mane.onreadystatechange = function () {
         if (mane.readyState == 4 && mane.status == 200) {
             respuesta = mane.responseText;
-            //alert(respuesta);
+            //alert("rio"+respuesta);
             if(respuesta == ""){
             }
             else{
@@ -419,17 +419,17 @@ function consolidado(){
     }
     
     //LLENADO DE ESTACIONE 100-500
-    estaci = sessionStorage.getItem("esc");
+    tramae2 = sessionStorage.getItem("esc");
     flag = "consolida";
-    mane = new XMLHttpRequest;
+    enviado = new XMLHttpRequest;
     //enviar.open('POST', '../../datosprueba/datoslocalns.php');
-    mane.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal100.php'); //para empaquetar
-    mane.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    mane.send('est=' + estaci + '&flag=' + flag);
-    mane.onreadystatechange = function () {
-        if (mane.readyState == 4 && mane.status == 200) {
-            respuesta = mane.responseText;
-            //alert(respuesta);
+    enviado.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocal100.php'); //para empaquetar
+    enviado.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    enviado.send('est=' + tramae2 + '&flag=' + flag);
+    enviado.onreadystatechange = function () {
+        if (enviado.readyState == 4 && enviado.status == 200) {
+            respuesta = enviado.responseText;
+            //alert("100500"+respuesta);
             if(respuesta == ""){
             }
             else{
@@ -442,7 +442,7 @@ function consolidado(){
                 l=3;
                 m=4
                 for(Z=0; Z<numero; Z+=6){
-                    document.querySelector(".divtabla4").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    document.querySelector(".divtabla5").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
                     
                     j = j+5;
                     k=k+5;
@@ -456,14 +456,14 @@ function consolidado(){
     //LLENADO DE ESTACION SUR
     estaci = sessionStorage.getItem("esc");
     flag = "consolida";
-    mane = new XMLHttpRequest;
+    envio = new XMLHttpRequest;
     //enviar.open('POST', '../../datosprueba/datoslocalns.php');
-    mane.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalsur.php'); //para empaquetar
-    mane.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    mane.send('est=' + estaci + '&flag=' + flag);
-    mane.onreadystatechange = function () {
-        if (mane.readyState == 4 && mane.status == 200) {
-            respuesta = mane.responseText;
+    envio.open('POST', 'http://www.mexienergi.com/aplicacion/datoslocalsur.php'); //para empaquetar
+    envio.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    envio.send('est=' + estaci + '&flag=' + flag);
+    envio.onreadystatechange = function () {
+        if (envio.readyState == 4 && envio.status == 200) {
+            respuesta = envio.responseText;
             //alert(respuesta);
             if(respuesta == ""){
             }
@@ -477,7 +477,7 @@ function consolidado(){
                 l=3;
                 m=4
                 for(Z=0; Z<numero; Z+=6){
-                    document.querySelector(".divtabla4").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
+                    document.querySelector(".divtabla6").innerHTML += "<div class='div1' id='esta'>"+sepa[j]+"</div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Fecha</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: white;'>Monto</p></div><div class='div3' style='display: block !important; background: rgba(255,38,0,1); margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: white; font-size: 1.4em;'>Lts</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-left: 2%; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black;' id='fechacon'>"+sepa[k]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style='font-size: 1.4em; color: black; margin-left:5px;' id='litroscon'>$"+sepa[l]+"</p></div><div class='div3' style='display: block !important; background: #ffe748; margin-right: 0% !important; margin-bottom: 4px !important;'><p style=' color: black; font-size: 1.4em;' id='pesoscon'>"+sepa[m]+"</p></div>";
                     
                     j = j+5;
                     k=k+5;
