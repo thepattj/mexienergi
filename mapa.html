@@ -42,6 +42,18 @@
             <div id="info7" style="display:none;">
               <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/epig.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>EPIGMENIO</strong> <br> Av. Epigmenio Gonzalez 1220 <br> Fracc. Industrial Montaña</p></div>
             </div>
+            <div id="info8" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/sur.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: .8em;"> <strong>SUR PONIENTE </strong> <br> Carretera Estatal 11,  Lib. Sur Pte. Km26+500 <br> Ejido Tlacote El Bajo, Querétaro</p></div>
+            </div>
+            <div id="info9" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/100500.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: .8em;"> <strong>100 y 500</strong> <br> Carretera Estatal 100 esquina Carretera Estatal 500 <br> Ex-Hacienda Calamandra, El Marques</p></div>
+            </div>
+            <div id="info10" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/balva.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>BALVAQRO</strong> <br>Carretera Libre A Celaya Km7+050 <br> Balvanera, Corregidora</p></div>
+            </div>
+            <div id="info11" style="display:none;">
+              <div class="div4"><img style="width: 120%; height: 80%; margin-left: 55%;" src="http://www.mexienergi.com/aplicacion/imgsta/rio.jpg" style=""></div><div class="div4"><p style="display: hidden;"></p></div><div class="div2"> <p style="font-size: 1em;"> <strong>SERVICIO RIO</strong> <br>Av. Rio Moctezuma #262 <br> El Pedregoso, San Juan del Rio</p></div>
+            </div>
         </div>
 </body>
 
@@ -74,7 +86,15 @@
 
         ['', 20.461568,-100.0979912],
 
-        ['', 20.6055384,-100.4089717]
+        ['', 20.6055384,-100.4089717],
+
+        ['', 20.636324, -100.499595],   //surponiente
+
+        ['', 20.5801099,-100.2000518],    //100-500
+
+        ['', 20.5346053,-100.4536011],    //balba
+
+        ['', 20.386713, -99.970794]        //rio
     ];  
     
     var myLatlng = new google.maps.LatLng(20.5588118,-100.2264654);
@@ -114,6 +134,10 @@
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "none";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 1){
                 /*window.alert("estas en tlacote");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -124,6 +148,10 @@
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "none";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 2){
                 /*window.alert("estas en macias");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -134,6 +162,10 @@
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "none";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 3){
                 /*window.alert("estas en servi");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -144,6 +176,10 @@
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "none";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 4){
                 /*window.alert("estas en aero");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -154,6 +190,10 @@
                 document.getElementById("info5").style.display = "block";
                 document.getElementById("info6").style.display = "none";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 5){
                 /*window.alert("estas en north");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -164,6 +204,10 @@
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "block";
                 document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
               }if(i == 6){
                 /*window.alert("estas en epgimenio");*/
                 document.querySelector(".infomap").style.display = "block";
@@ -173,7 +217,67 @@
                 document.getElementById("info4").style.display = "none";
                 document.getElementById("info5").style.display = "none";
                 document.getElementById("info6").style.display = "none";
-                document.getElementById("info7").style.display = "block";
+                document.getElementById("info7").style.display = "block"
+                document.getElementById("info8").style.display = "none";;
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
+              }if(i == 7){
+                /*window.alert("estas en epgimenio");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "block";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
+              }if(i == 8){
+                /*window.alert("estas en epgimenio");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "block";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "none";
+              }if(i == 9){
+                /*window.alert("estas en epgimenio");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "block";
+                document.getElementById("info11").style.display = "none";
+              }if(i == 10){
+                /*window.alert("estas en epgimenio");*/
+                document.querySelector(".infomap").style.display = "block";
+                document.getElementById("info1").style.display = "none";
+                document.getElementById("info2").style.display = "none";
+                document.getElementById("info3").style.display = "none";
+                document.getElementById("info4").style.display = "none";
+                document.getElementById("info5").style.display = "none";
+                document.getElementById("info6").style.display = "none";
+                document.getElementById("info7").style.display = "none";
+                document.getElementById("info8").style.display = "none";
+                document.getElementById("info9").style.display = "none";
+                document.getElementById("info10").style.display = "none";
+                document.getElementById("info11").style.display = "block";
               }
                 /*infowindow.setContent(marcadores[i][0]);
                 infowindow.open(map, marker);*/
